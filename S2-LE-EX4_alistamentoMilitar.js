@@ -7,7 +7,6 @@ console.log("-=".repeat(30));
 var anoAtual = new Date().getFullYear();
 var nascimento = Number(prompt("Qual é o ano do seu nascimento? "));
 var idade = anoAtual - nascimento;
-
 var sexo = prompt("Digite [F] para feminino e [M] para masculino: ");
 
 if (sexo == "F" || sexo == "f") {
