@@ -1,3 +1,4 @@
+//Construa um algoritmo que receba informações do funcionário e gere uma carta de pedido de férias conforme a template.
 var dataHoje = new Date().toLocaleDateString();
 
 var nomeFuncionario = prompt("Digite o nome do funcionário: ");
