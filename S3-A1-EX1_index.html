@@ -18,6 +18,42 @@
     <main>
       <p>Estrutura Básica de um documento HTML. &#128512;</p>
       <!-- Comentário -->
+
+      <!-- action post exemplo -->
+      <form method="post" action="">
+        <label for="nomePessoa">Exemplo Post</label><br />
+        <input
+          type="text"
+          id="nomePessoa"
+          name="nome-da-pessoa"
+          placeholder="Informe um nome"
+        />
+
+        <label for="categoria">Exemplo Post</label><br />
+        <select id="categoria" name="categoria">
+          <option value="" disabled selected>Selecione</option>
+          <option value="doce">Doce</option>
+          <option value="salgado">Salgado</option>
+        </select>
+
+        <br />
+        <input type="submit" label="Enviar" />
+      </form>
+
+      <!-- action get exemplo para google -->
+      <form method="get" action="https://google.com/search">
+        <label for="termo">Pesquisar no Google</label><br />
+        <input
+          type="text"
+          id="termo"
+          name="q"
+          placeholder="Informe um termo de pesquisa"
+        />
+        <button type="submit">Pesquisar</button>
+      </form>
+
+      <br /><br />
+
       <div>
         <a
           href="https://www.google.com"
