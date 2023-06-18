@@ -1,0 +1,52 @@
+/* pseudo elemento raiz dos estilos CSS */
+:root {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+[href="https://google.com"]
+{
+  background-color: orange;
+}
+
+ol:hover {
+  background-color: blueviolet;
+}
+
+input:focus {
+  outline-color: red;
+}
+
+p:first-child {
+  background-color: lightgreen;
+}
+
+p::before {
+  content: "😎";
+}
+
+p:not(:first-child) {
+  background-color: chocolate;
+}
+
+main {
+  position: relative;
+}
+
+a {
+  top: 0px;
+  right: 0px;
+  position: absolute;
+}
+
+ol.lista {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  /* flex-direction: column; */
+}
+
+ol.lista li {
+  background-color: aquamarine;
+}
