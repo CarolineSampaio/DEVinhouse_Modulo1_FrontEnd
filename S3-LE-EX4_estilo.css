@@ -1,0 +1,43 @@
+.titulo {
+  font-family: "Times New Roman", Times, serif;
+  color: navy;
+  text-align: center;
+  margin: 10px;
+}
+
+.background {
+  background-color: #d6eaf8;
+}
+
+div {
+  display: flex;
+  gap: 20px;
+  padding: 5px;
+}
+
+.formulario {
+  margin: 0 auto;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1rem;
+}
+
+label {
+  width: 150px;
+}
+
+input,
+select {
+  border-radius: 5px;
+  border-style: none;
+}
+
+.botao {
+  background: #b4cee0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1rem;
+  margin: 5px;
+}
+
+.botao:hover {
+  background: #0095ff;
+}

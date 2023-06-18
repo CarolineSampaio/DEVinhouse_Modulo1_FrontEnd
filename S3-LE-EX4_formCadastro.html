@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="S3-LE-EX4_estilo.css" />
+    <title>Formulário de Cadastro</title>
+  </head>
+  <body>
+    <main class="conteudo">
+      <h1 class="titulo">Formulário de Cadastro</h1>
+      <fieldset>
+        <legend>Preencha os dados</legend>
+        <div class="background">
+          <form class="formulario">
+            <div>
+              <label for="nome">Nome:</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                maxlength="100"
+                class="resp-formulario"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="data-nascimento"> Data de Nascimento: </label>
+              <input
+                type="date"
+                id="data-nascimento"
+                name="data-nascimento"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="cpf">CPF:</label>
+              <input
+                type="text"
+                id="cpf"
+                name="cpf"
+                maxlength="11"
+                placeholder="xxx.xxx.xxx-xx"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="municipio">Município:</label>
+              <select id="municipio" name="municipio" required>
+                <option value="">Selecione um município</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Belo Horizonte">Belo Horizonte</option>
+                <option value="Salvador">Salvador</option>
+                <option value="Recife">Recife</option>
+              </select>
+            </div>
+
+            <input type="submit" value="Cadastrar" class="botao" />
+          </form>
+        </div>
+      </fieldset>
+    </main>
+  </body>
+</html>
