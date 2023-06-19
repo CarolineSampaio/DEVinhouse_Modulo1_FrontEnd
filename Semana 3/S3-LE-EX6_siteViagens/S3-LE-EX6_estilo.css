@@ -5,7 +5,7 @@
   text-decoration: none;
   list-style: none;
   font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
-  color: white;
+  color: #1f5d82;
 }
 
 header {
@@ -26,11 +26,63 @@ nav {
   margin-right: 300px;
 }
 
-.botao {
+.botao-menu {
+  color: white;
   padding: 10px;
 }
 
-.botao:hover {
+.botao-menu:hover {
   border-radius: 5px;
   background-color: #f87847;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cartao {
+  margin-top: 100px;
+  width: 240px;
+  height: 250px;
+  border: 1px solid #1f5d82;
+  border-radius: 8px;
+}
+
+.imagem {
+  width: 230px;
+  margin: 5px 5px 0px 5px;
+  border-radius: 4px;
+}
+
+.cidade {
+  margin: 0px 10px;
+  font-style: italic;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  margin: 10px;
+}
+
+.botao-visualizar {
+  font-size: 14px;
+  color: white;
+  background-color: #f87847;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.botao-visualizar:hover {
+  background-color: #1f5d82;
+}
+
+div.flex > div > p {
+  font-weight: 500;
+  font-size: 14px;
 }
