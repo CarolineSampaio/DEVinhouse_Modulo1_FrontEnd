@@ -16,16 +16,17 @@
       />
 
       <div class="botoes">
-        <select id="idioma" name="idioma">
+        <select id="idioma" name="idioma" class="botao-idioma">
           <option value="Português">Português</option>
           <option value="English">English</option>
         </select>
 
-        <input type="submit" value="Entrar" class="botao" />
+        <input type="submit" value="Entrar" class="botao-entrar" />
       </div>
     </header>
 
     <main>
+      
       <div class="banner">
         <div class="bloco-conteudo">
           <h1>Filmes, séries e muito mais, sem limites</h1>
@@ -34,16 +35,18 @@
             Quer assistir? Informe seu email para criar ou reiniciar sua
             assinatura.
           </p>
-          <label for="txtEmail" class="rotulo"></label>
-          <input
-            type="email"
-            size="50"
-            id="txtEmail"
-            class="entrada"
-            placeholder="Email"
-            required
-          />
-          <input type="submit" value="Vamos lá >" class="botao2" />
+          <div class="flex-row">
+            <label for="txtEmail" class="rotulo" ></label>
+            <input
+              type="email"
+              size="50"
+              id="txtEmail"
+              placeholder="Email"
+              class="email"
+              required
+            />
+            <input type="submit" value="Vamos lá >" class="botao-email" />
+          </div>
         </div>
       </div>
 
@@ -90,6 +93,7 @@
           </div>
         </div>
       </div>
+
     </main>
 
     <footer>
