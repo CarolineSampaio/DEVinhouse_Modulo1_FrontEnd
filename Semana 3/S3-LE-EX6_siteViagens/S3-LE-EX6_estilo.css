@@ -10,7 +10,7 @@
 
 header {
   width: 100%;
-  height: 80px;
+  height: 100px;
   background-color: #1f5d82;
   display: flex;
   flex: 1;
@@ -18,17 +18,19 @@ header {
 }
 
 .logo {
-  padding-left: 200px;
+  padding-left: 300px;
 }
 
 nav {
   margin-left: auto;
-  margin-right: 200px;
+  margin-right: 300px;
 }
 
 .botao-menu {
+  font-size: 18px;
   color: white;
   padding: 10px;
+  font-weight: 500;
 }
 
 .botao-menu:hover {
@@ -36,29 +38,35 @@ nav {
   background-color: #f87847;
 }
 
+.imagem-promo {
+  margin-left: 300px;
+  margin-top: 55px;
+}
+
 .encapsula-cartoes {
-  margin: 0px 200px;
+  margin: 0px 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 92px;
 }
 
 .cartao {
-  margin-top: 100px;
-  width: 240px;
-  height: 250px;
+  width: 340px;
+  height: 350px;
   border: 1px solid #1f5d82;
   border-radius: 8px;
 }
 
 .imagem {
-  width: 230px;
+  width: 330px;
   margin: 5px 5px 0px 5px;
   border-radius: 4px;
 }
 
 .cidade {
-  margin: 0px 10px;
+  font-size: 22px;
+  margin: 10px;
   font-style: italic;
 }
 
@@ -71,11 +79,21 @@ nav {
   margin: 10px;
 }
 
+div.flex > div > p {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+div.flex > div > h4 {
+  font-weight: 800;
+  font-size: 18px;
+}
+
 .botao-visualizar {
-  font-size: 12px;
+  font-size: 16px;
   color: white;
   background-color: #f87847;
-  padding: 5px;
+  padding: 8px;
   border-radius: 8px;
 }
 
@@ -83,9 +101,11 @@ nav {
   background-color: #1f5d82;
 }
 
-div.flex > div > p {
-  font-weight: 500;
-  font-size: 14px;
+section > h4 {
+  margin-left: 300px;
+  padding: 20px 0px;
+  font-weight: 700;
+  font-size: 22px;
 }
 
 .campo-busca {
@@ -94,7 +114,8 @@ div.flex > div > p {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  margin: 100px 200px 100px 200px;
+  margin: 0px 300px;
+  margin-bottom: 75px;
 }
 
 input[type="text"] {
@@ -110,12 +131,20 @@ input[type="date"] {
   height: 30px;
 }
 
+label {
+  margin-right: 10px;
+}
+
 button {
   font-size: 15px;
   color: white;
   background-color: #f87847;
   border-radius: 8px;
   padding: 6px 55px;
+}
+
+button:hover {
+  background-color: #1f5d82;
 }
 
 footer {
@@ -125,12 +154,10 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  bottom: 0;
 }
 
 footer > p {
   margin-right: 200px;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
 }
