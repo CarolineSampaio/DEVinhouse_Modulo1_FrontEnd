@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="S3-LE-EX6_estilo.css" />
     <title>Top Tour</title>
   </head>
+
   <body>
     <header>
       <img
@@ -23,69 +24,104 @@
     </header>
 
     <main>
-      <section class="cartao">
-        <img
-          src="imagens/porto seguro.jpg"
-          alt="foto de Porto Seguro"
-          class="imagem"
-        />
-        <h3 class="cidade">Porto Seguro</h3>
-        <div class="flex">
-          <div>
-            <p>Preço a partir de</p>
-            <h4>BTC 0,186756</h4>
+      <div class="encapsula-cartoes">
+        <section class="cartao">
+          <img
+            src="imagens/porto seguro.jpg"
+            alt="foto de Porto Seguro"
+            class="imagem"
+          />
+          <h3 class="cidade">Porto Seguro</h3>
+          <div class="flex">
+            <div>
+              <p>Preço a partir de</p>
+              <h4>BTC 0,186756</h4>
+            </div>
+            <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
           </div>
-          <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
-        </div>
-      </section>
+        </section>
 
-      <section class="cartao">
-        <img
-          src="imagens/rio de janeiro.jpg"
-          alt="foto do Rio de Janeiro"
-          class="imagem"
-        />
-        <h3 class="cidade">Rio de janeiro</h3>
-        <div class="flex">
-          <div>
-            <p>Preço a partir de</p>
-            <h4>BTC 0,145242</h4>
+        <section class="cartao">
+          <img
+            src="imagens/rio de janeiro.jpg"
+            alt="foto do Rio de Janeiro"
+            class="imagem"
+          />
+          <h3 class="cidade">Rio de janeiro</h3>
+          <div class="flex">
+            <div>
+              <p>Preço a partir de</p>
+              <h4>BTC 0,145242</h4>
+            </div>
+            <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
           </div>
-          <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
-        </div>
-      </section>
+        </section>
 
-      <section class="cartao">
-        <img src="imagens/Curitiba.jpg" alt="foto de Curitiba" class="imagem" />
-        <h3 class="cidade">Curitiba</h3>
-        <div class="flex">
-          <div>
-            <p>Preço a partir de</p>
-            <h4>BTC 0,138761</h4>
+        <section class="cartao">
+          <img
+            src="imagens/Curitiba.jpg"
+            alt="foto de Curitiba"
+            class="imagem"
+          />
+          <h3 class="cidade">Curitiba</h3>
+          <div class="flex">
+            <div>
+              <p>Preço a partir de</p>
+              <h4>BTC 0,138761</h4>
+            </div>
+            <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
           </div>
-          <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
-        </div>
-      </section>
+        </section>
 
-      <section class="cartao">
-        <img
-          src="imagens/ilha do mel.jpg"
-          alt="foto de Paranaguá"
-          class="imagem"
-        />
-        <h3 class="cidade">Ilha do mel</h3>
-        <div class="flex">
-          <div>
-            <p>Preço a partir de</p>
-            <h4>BTC 0,138761</h4>
+        <section class="cartao">
+          <img
+            src="imagens/ilha do mel.jpg"
+            alt="foto de Paranaguá"
+            class="imagem"
+          />
+          <h3 class="cidade">Ilha do mel</h3>
+          <div class="flex">
+            <div>
+              <p>Preço a partir de</p>
+              <h4>BTC 0,138761</h4>
+            </div>
+            <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
           </div>
-          <a href="" class="botao-visualizar">Visualizar &gt;&gt;</a>
-        </div>
+        </section>
+      </div>
+
+      <section>
+        <form action="" class="campo-busca">
+          <input type="text" name="origem" placeholder="Informe a Origem" />
+          <input type="text" name="destino" placeholder="Informe o Destino" />
+
+          <div>
+            <label for="data-ida">Ida</label>
+            <input
+              type="date"
+              id="data-ida"
+              name="data-ida"
+              placeholder="dd-mm-aaaa"
+            />
+          </div>
+
+          <div>
+            <label for="data-volta">Volta</label>
+            <input
+              type="date"
+              name="data-volta"
+              name="data-volta"
+              placeholder="dd-mm-aaaa"
+            />
+          </div>
+
+          <button type="submit">Procurar &gt;&gt;</button>
+        </form>
       </section>
     </main>
 
-    <footer class="flex">
-      <!-- <img
+    <footer>
+      <img
         src="imagens/logo.png"
         alt="logo top tour"
         height="70px"
@@ -94,7 +130,7 @@
       <p>
         (C) 2023 Agência de Turismo - Rua Max Cavalera n° 673, 20° andar, CEP
         42352345252 Transilvania/SC - CNPJ: 55.555.55/0001-55
-      </p> -->
+      </p>
     </footer>
   </body>
 </html>
