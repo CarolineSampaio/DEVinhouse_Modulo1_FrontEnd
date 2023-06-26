@@ -6,19 +6,27 @@
     <link rel="stylesheet" href="S4-A2-EX1_estilo.css" />
     <title>Instagram</title>
   </head>
+
   <body>
-    <div>
+    <form class="formulario">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png"
         alt="Logo do instagram"
         width="180px"
       />
 
-      <input type="text" placeholder="Telefone, nome de usuário ou email" />
-      <input type="password" placeholder="Senha" />
-      <button>Entrar</button>
+      <input
+        id="campoLogin"
+        autofocus
+        type="text"
+        placeholder="Telefone, nome de usuário ou email"
+      />
+      <input id="campoSenha" type="password" placeholder="Senha" />
+      <button type="button" onclick="clicaNoBotao()">Entrar</button>
 
       <a href="">Esqueceu a senha?</a>
-    </div>
+    </form>
+
+    <script src="S4-A2-EX1_script.js"></script>
   </body>
 </html>
