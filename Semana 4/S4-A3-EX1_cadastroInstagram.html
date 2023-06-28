@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="S4-A3-EX1_estilo.css" />
+    <link
+      rel="shortcut icon"
+      href="https://static.cdninstagram.com/rsrc.php/v3/yR/r/lam-fZmwmvn.png"
+      type="png"
+    />
+    <title>Cadastro</title>
+  </head>
+
+  <body>
+    <form class="formulario">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png"
+        alt="Logo do instagram"
+        width="180px"
+      />
+
+      <p>Cadastre-se para ver fotos e vídeos de seus amigos.</p>
+
+      <input id="campoEmail" type="email" placeholder="Email" autofocus />
+
+      <input id="campoTelefone" type="tel" placeholder="Número do celular" />
+
+      <div class="inputArea">
+        <input id="campoNomeCompleto" type="text" placeholder="Nome completo" />
+        <span id="errorNome" class="textoErro" hidden></span>
+      </div>
+
+      <input id="campoNomeUsuario" type="text" placeholder="Nome de usuário" />
+
+      <div class="inputArea">
+        <input id="campoSenha" type="password" placeholder="Senha" />
+        <span id="errorSenha" class="textoErro" hidden></span>
+      </div>
+
+      <button id="loginButton" type="button" onclick="fazerCadastro()">
+        Cadastre-se
+      </button>
+
+      <!-- <a href="">Esqueceu a senha?</a> -->
+    </form>
+
+    <script src="S4-A3-EX1_scriptCadastro.js"></script>
+  </body>
+</html>
