@@ -67,3 +67,49 @@ switch (numeroB) {
   default:
     console.log("outro");
 }
+
+// Estruturas de REPETIÇÃO
+
+// Exemplo for até 10
+// ([inicialização]; [condição]; [incremento])
+for (let i = 0; i < 10; i++) {
+  //console.log(i);
+}
+
+// Exemplo for em array
+const listaA = ["banana", "mamao", "abacate"];
+
+for (let i = 0; i < listaA.length; i++) {
+  //console.log(`${i}: ${listaA[i]}`);
+}
+
+// Exemplo while
+let entradaA = "";
+
+// while (entradaA !== "fim") {
+//   entradaA = prompt("Digite um comando:");
+//   console.log(entradaA);
+// }
+
+// Exemplo do while
+let entradaB = "";
+
+// do {
+//   entradaB = prompt("Digite um comando:");
+//   console.log(entradaB);
+// } while (entradaB !== "fim");
+
+// Exemplo forEach
+const listaB = ["banana", "mamao", "abacate"];
+
+listaB.push("manga");
+
+// exemplo de função comum equivalente
+// function nomeDaFuncao(item, indice, lista) {
+//   console.log(item, indice, lista);
+// }
+
+// forEach com arrow function
+listaB.forEach((item, indice, lista) => {
+  console.log(item, indice, lista);
+});
