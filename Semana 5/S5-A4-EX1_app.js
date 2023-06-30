@@ -55,3 +55,51 @@ pessoas.forEach((item) => {
 
   elementoLista.appendChild(elementoItem);
 });
+
+// exemplo map
+// map cria um novo array com os returns de cada volta
+const resultado = pessoas.map(({ id, nome, idade }) => {
+  return `Id: ${id} Nome: ${nome} Idade:${idade}`;
+});
+
+//console.log(resultado);
+
+const termoDePesquisa = "a";
+
+// exemplo filter
+const filtrado = pessoas.filter(({ nome }) => {
+  return nome.includes(termoDePesquisa);
+});
+
+if (filtrado.length) {
+  //console.log(filtrado);
+} else {
+  //console.log("nada filtrado");
+}
+
+// exemplo find
+const encontrado = pessoas.find((item) => {
+  return item.id === 2;
+});
+
+if (encontrado) {
+  //console.log(encontrado);
+} else {
+  //console.log("não encontrado");
+}
+
+// exemplo every
+// testa se todos elementos satisfazem a condição da função
+const todosSatisfazem = pessoas.every((item) => {
+  return item.idade > 30;
+});
+
+console.log({ todosSatisfazem });
+
+// exemplo some
+// testa se ao menos um elemento satisfaz a condição da função
+const algumSatisfaz = pessoas.some((item) => {
+  return item.idade > 30;
+});
+
+console.log({ algumSatisfaz });
