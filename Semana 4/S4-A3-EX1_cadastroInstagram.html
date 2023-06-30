@@ -21,17 +21,28 @@
       />
 
       <p>Cadastre-se para ver fotos e vídeos de seus amigos.</p>
-
-      <input id="campoEmail" type="email" placeholder="Email" autofocus />
-
-      <input id="campoTelefone" type="tel" placeholder="Número do celular" />
+      <div class="inputArea">
+        <input id="campoEmail" type="email" placeholder="Email" autofocus />
+        <span id="errorEmail" class="textoErro" hidden></span>
+      </div>
+      <div class="inputArea">
+        <input id="campoTelefone" type="tel" placeholder="Número do celular" />
+        <span id="errorTelefone" class="textoErro" hidden></span>
+      </div>
 
       <div class="inputArea">
         <input id="campoNomeCompleto" type="text" placeholder="Nome completo" />
         <span id="errorNome" class="textoErro" hidden></span>
       </div>
 
-      <input id="campoNomeUsuario" type="text" placeholder="Nome de usuário" />
+      <div class="inputArea">
+        <input
+          id="campoNomeUsuario"
+          type="text"
+          placeholder="Nome de usuário"
+        />
+        <span id="errorUsuario" class="textoErro" hidden></span>
+      </div>
 
       <div class="inputArea">
         <input id="campoSenha" type="password" placeholder="Senha" />
@@ -41,9 +52,12 @@
       <button id="loginButton" type="button" onclick="fazerCadastro()">
         Cadastre-se
       </button>
-
-      <!-- <a href="">Esqueceu a senha?</a> -->
     </form>
+
+    <section class="formulario cadastro">
+      <span>Tem uma conta?</span
+      ><a href="S4-A2-EX1_loginInstagram.html">Conecte-se</a>
+    </section>
 
     <script src="S4-A3-EX1_scriptCadastro.js"></script>
   </body>
