@@ -42,7 +42,6 @@
 .content {
   flex: 1;
   padding: 20px;
-  background-color: #ece8e8;
   margin-left: 200px;
 }
 
@@ -92,4 +91,29 @@ p {
 .containerGridLayout img {
   width: 100%;
   height: auto;
-} */
+}
+
+/* CSS Seguidores */
+
+.tabelaSeguidores {
+  width: 100%;
+  border: 0;
+}
+
+.tabelaSeguidores thead {
+  background-color: #286ee0;
+  color: #fff;
+}
+
+.tabelaSeguidores tbody tr {
+  height: 48px;
+}
+
+.tabelaSeguidores tbody tr td {
+  text-align: center;
+}
+
+td img {
+  border-radius: 50%;
+  width: 60px;
+}
