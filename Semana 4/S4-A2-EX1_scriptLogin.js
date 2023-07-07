@@ -25,6 +25,6 @@ function clicaNoBotao() {
     document.getElementById("loginButton").innerText = "Logando...";
 
     // redireciona para outra página
-    window.location.href = "https://www.google.com/";
+    window.location.href = "S4-A4-EX1_home.html";
   }
 }
