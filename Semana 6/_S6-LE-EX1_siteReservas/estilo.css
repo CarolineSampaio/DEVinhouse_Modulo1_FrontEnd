@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+}
+
+html {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  width: 50%;
+}
+
+img {
+  width: 25%;
+  margin: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 20px;
+  border: 1px solid #bbd1dd;
+  border-radius: 4px;
+}
+
+h1 {
+  color: #1f5d82;
+}
+
+label {
+  font-weight: bold;
+  color: #1f5d82;
+}
+
+input {
+  height: 35px;
+  padding-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #bbd1dd;
+  outline: none;
+}
+
+button {
+  height: 35px;
+  width: 15%;
+  background-color: #f87847;
+
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+button:hover {
+  background-color: #1f5d82;
+}
+
+.inputErro {
+  border-color: red;
+}
+
+.textoErro {
+  color: red;
+  font-size: 12px;
+}
