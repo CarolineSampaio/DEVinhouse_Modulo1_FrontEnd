@@ -1,10 +1,9 @@
-import Item from "./S7-A3-EX1_item";
+import Item from "./S7-A3-EX1_item.js";
 import { dadosLista } from "./S7-A3-EX1_dados.js";
 
 console.log("m1_s07_a3");
 
 const elemLista = document.getElementById("lista-itens");
-
 let listaControle = [];
 
 function criaInstanciasItens(lista) {
