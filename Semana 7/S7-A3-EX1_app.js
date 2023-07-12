@@ -1,22 +1,30 @@
+import Item from "./S7-A3-EX1_item";
+import { dadosLista } from "./S7-A3-EX1_dados.js";
+
 console.log("m1_s07_a3");
 
 const elemLista = document.getElementById("lista-itens");
 
-const dadosLista = ["Batata", "Arroz", "Ervilha"];
+let listaControle = [];
 
-function criaItem(item) {
-  const li = document.createElement("li");
-  li.innerHTML = item;
-  return li;
+function criaInstanciasItens(lista) {
+  return lista.map((item) => {
+    return new Item(item);
+  });
 }
 
 function atualizaTela() {
   elemLista.innerHTML = "";
 
-  dadosLista.forEach((item) => {
-    const elemItem = criaItem(item);
+  listaControle.forEach((item) => {
+    const elemItem = item.criaItem();
     elemLista.appendChild(elemItem);
   });
 }
 
-atualizaTela();
+// função anônima de uso único
+(function () {
+  // inicialização da nossa aplicação
+  listaControle = criaInstanciasItens(dadosLista);
+  atualizaTela();
+})();
