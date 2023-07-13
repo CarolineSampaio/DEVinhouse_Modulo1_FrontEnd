@@ -20,6 +20,8 @@ p {
 }
 
 body {
+  width: 100%;
+  min-width: 160px;
   min-height: 100vh;
   padding: 8px;
   display: flex;
@@ -29,10 +31,30 @@ body {
 }
 
 main {
+  max-width: 100%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+form > div {
+  display: flex;
+  gap: 4px;
+}
+
+form > div input,
+form > div select,
+form > div button {
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 ul {
@@ -48,4 +70,7 @@ li {
   border: 1px solid gray;
   border-radius: 4px;
   padding: 4px;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
 }

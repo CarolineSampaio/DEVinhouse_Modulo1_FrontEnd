@@ -16,16 +16,30 @@
 
     <main>
       <form id="formulario">
-        <label for="titulo-item">Titulo</label>
-        <input type="text" id="titulo-item" name="titulo" />
-        <button type="submit">Adiciona</button>
+        <div>
+          <label for="titulo-item">Título</label>
+          <input type="text" id="titulo-item" name="titulo" required />
+        </div>
+
+        <div>
+          <label for="tipo-item">Tipo</label>
+          <select id="tipo-item" name="tipo">
+            <option value="nota">Nota</option>
+            <option value="tarefa">Tarefa</option>
+          </select>
+        </div>
+
+        <div>
+          <button type="reset">Limpar</button>
+          <button type="submit">Adicionar</button>
+        </div>
       </form>
 
       <ul id="lista-itens">
+        <!-- preenchido dinamicamente pelo javascript -->
       </ul>
     </main>
 
     <footer>DiH &middot; 2023</footer>
-  </body>
   </body>
 </html>
