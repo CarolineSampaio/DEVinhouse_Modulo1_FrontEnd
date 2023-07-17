@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seguidores</title>
+    <link rel="stylesheet" type="text/css" href="S8_estilos.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <ul>
+          <li><a href="S8_home.html">Feed</a></li>
+          <li><a href="S8_explorar.html">Explore</a></li>
+          <li><a href="#">Perfil</a></li>
+          <li><a href="S8_loginInstagram.html">Sair</a></li>
+        </ul>
+      </div>
+
+      <div class="content" id="conteudo">
+        <h1>Seus seguidores</h1>
+
+        <form id="formPesquisa">
+          <input
+            class="inputPesquisa"
+            id="inputPesquisa"
+            type="text"
+            placeholder="Buscar ..."
+          />
+        </form>
+
+        <div
+          class="observationMessage disableMessage"
+          id="observationMessage"
+        ></div>
+
+        <table border="1" class="tabelaSeguidores">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Nº Seguidores</th>
+              <th>Nº Publicações</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabela"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="scripts/S8_seguidores.js" type="module"></script>
+  </body>
+</html>
