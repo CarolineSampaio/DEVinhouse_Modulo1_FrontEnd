@@ -2,29 +2,37 @@ import { usuarios } from "../constantes/usuarios.js";
 
 document.getElementById("formLogin").addEventListener("submit", realizarLogin);
 
-const CampoLogin = document.getElementById("campoLogin");
-const CampoSenha = document.getElementById("campoSenha");
+document.getElementById("aceitar").addEventListener("click", salvarDecisao);
+document.getElementById("rejeitar").addEventListener("click", salvarDecisao);
+
+function salvarDecisao() {
+  localStorage.setItem("decisaoPermissao", "ok");
+  document.getElementById("modalPermissao").style.display = "none";
+}
+
+const campoLogin = document.getElementById("campoLogin");
+const campoSenha = document.getElementById("campoSenha");
 const loginBotao = document.getElementById("loginButton");
 
 function resetForm() {
-  CampoLogin.classList.remove("input-error");
-  CampoSenha.classList.remove("input-error");
+  campoLogin.classList.remove("input-error");
+  campoSenha.classList.remove("input-error");
 }
 
 function realizarLogin(event) {
   event.preventDefault();
 
-  const login = CampoLogin.value;
-  const senha = CampoSenha.value;
+  const login = campoLogin.value;
+  const senha = campoSenha.value;
 
   resetForm();
 
   if (login === "") {
-    CampoLogin.classList.add("input-error");
-    CampoLogin.focus();
+    campoLogin.classList.add("input-error");
+    campoLogin.focus();
   } else if (senha === "") {
-    CampoSenha.classList.add("input-error");
-    CampoSenha.focus();
+    campoSenha.classList.add("input-error");
+    campoSenha.focus();
   } else {
     loginBotao.disabled = true;
     loginBotao.style.opacity = 0.5;
@@ -37,7 +45,15 @@ function realizarLogin(event) {
     if (usuarioEncontrado) {
       localStorage.setItem("nomeUsuario", "joao");
 
-      window.location.href = "S8_home.html";
+      campoLogin.style.display = "none";
+      campoSenha.style.display = "none";
+      loginBotao.style.display = "none";
+
+      document.getElementById("formLogin").innerText = "Entrando ...";
+
+      setTimeout(() => {
+        window.location.href = "S8_home.html";
+      }, 3000);
     } else {
       loginBotao.disabled = false;
       loginBotao.style.opacity = 1;
@@ -47,3 +63,13 @@ function realizarLogin(event) {
     }
   }
 }
+
+function exibirModal() {
+  const decisao = localStorage.getItem("decisaoPermissao");
+
+  if (decisao !== "ok") {
+    document.getElementById("modalPermissao").style.display = "flex";
+  }
+}
+
+setTimeout(exibirModal, 5000);

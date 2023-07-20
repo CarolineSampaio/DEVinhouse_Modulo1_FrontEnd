@@ -45,7 +45,12 @@ function mostrarInformacoes() {
 
 function gerarTextoBemVindo() {
   const nome = localStorage.getItem("nomeUsuario");
-  document.getElementById("BemVindoUsuario").innerText = "Bem vindo " + nome;
+
+  if (!nome) {
+    window.location.href = "./S8_loginInstagram.html";
+  } else {
+    document.getElementById("BemVindoUsuario").innerText = "Bem vindo " + nome;
+  }
 }
 
 gerarTextoBemVindo();
