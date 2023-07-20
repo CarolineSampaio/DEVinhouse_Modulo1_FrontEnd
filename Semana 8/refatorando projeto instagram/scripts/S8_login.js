@@ -35,6 +35,8 @@ function realizarLogin(event) {
     );
 
     if (usuarioEncontrado) {
+      localStorage.setItem("nomeUsuario", "joao");
+
       window.location.href = "S8_home.html";
     } else {
       loginBotao.disabled = false;

@@ -43,4 +43,11 @@ function mostrarInformacoes() {
   exibirImage();
 }
 
+function gerarTextoBemVindo() {
+  const nome = localStorage.getItem("nomeUsuario");
+  document.getElementById("BemVindoUsuario").innerText = "Bem vindo " + nome;
+}
+
+gerarTextoBemVindo();
+
 window.onload = mostrarInformacoes;
