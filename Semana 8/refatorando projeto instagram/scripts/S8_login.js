@@ -1,7 +1,10 @@
 import { usuarios } from "../constantes/usuarios.js";
 
-document.getElementById("formLogin").addEventListener("submit", realizarLogin);
+const campoLogin = document.getElementById("campoLogin");
+const campoSenha = document.getElementById("campoSenha");
+const loginBotao = document.getElementById("loginButton");
 
+document.getElementById("formLogin").addEventListener("submit", realizarLogin);
 document.getElementById("aceitar").addEventListener("click", salvarDecisao);
 document.getElementById("rejeitar").addEventListener("click", salvarDecisao);
 
@@ -9,10 +12,6 @@ function salvarDecisao() {
   localStorage.setItem("decisaoPermissao", "ok");
   document.getElementById("modalPermissao").style.display = "none";
 }
-
-const campoLogin = document.getElementById("campoLogin");
-const campoSenha = document.getElementById("campoSenha");
-const loginBotao = document.getElementById("loginButton");
 
 function resetForm() {
   campoLogin.classList.remove("input-error");
@@ -73,3 +72,9 @@ function exibirModal() {
 }
 
 setTimeout(exibirModal, 5000);
+
+function exibirData() {
+  const data = new Date().toLocaleTimeString();
+  document.getElementById("data").innerHTML = data;
+}
+setInterval(exibirData, 1000);
