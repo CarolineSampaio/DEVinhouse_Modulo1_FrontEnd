@@ -1,20 +1,16 @@
 <template>
-  <div>
-    <Card>
-      <template v-slot:header>
-        <h1>Titulo do card</h1>
-      </template>
-      <p>
-        Conteúdo do slot default, sem nome. Lorem ipsum dolor sit amet. Sed
-        porro dolorem ut aliquam tenetur qui officiis ratione id omnis
-        voluptates quo voluptatum expedita! Et aliquam similique aut esse sint
-        qui rerum labore cum officiis culpa sit odio omnis.
-      </p>
-      <template #footer>
-        <h6>Created by Caroline Sampaio</h6>
-      </template>
-    </Card>
-  </div>
+  <Card>
+    <template #header>
+      <h1>Carro novo da Ferrari</h1>
+    </template>
+    <template #imagem>
+      <img
+        :width="200"
+        src="https://media.formula1.com/content/dam/fom-website/sutton/2022/Brazil/Friday/1440800084.jpg"
+        alt=""
+      />
+    </template>
+  </Card>
 </template>
 
 <script>
