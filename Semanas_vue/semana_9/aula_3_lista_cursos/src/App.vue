@@ -8,6 +8,7 @@
       :titulo="curso.titulo"
       :duracao="curso.duracao"
       :vagas="curso.vagas"
+      @inscrever="inscrever"
     />
   </div>
 </template>
@@ -39,6 +40,12 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    inscrever() {
+      alert("Inscrição realizada com sucesso!");
+    },
   },
 };
 </script>
