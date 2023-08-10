@@ -17,6 +17,8 @@
 
     <button type="submit">Logar</button>
 
+    <p><router-link to="/cadastro">Cadastre-se</router-link></p>
+
     <div class="errorBox">
       <ul>
         <li v-if="errorInputEmail">{{ errorInputEmail }}</li>
@@ -45,7 +47,10 @@ export default {
       if (this.email === '') this.errorInputEmail = 'Digite um email válido!'
 
       if (this.password === '') this.errorInputPassword = 'Digite uma senha válida!'
-      // Login
+
+      if (!this.errorInputEmail && !this.errorInputPassword) {
+        this.$router.push('/home')
+      }
     },
     outroMetodo() {}
   }
