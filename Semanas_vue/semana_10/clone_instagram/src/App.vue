@@ -1,16 +1,22 @@
 <template>
-  <form @submit.prevent="handleLogin" class="form-login">
-    <div class="error-box">
+  <form @submit.prevent="handleLogin" class="formLogin">
+    <img src="./assets/logo.png" alt="Logo" />
+    <input :class="[classInputEmail]" type="text" v-model="email" placeholder="Digite seu email" />
+    <input
+      :class="[classInputPassword]"
+      type="password"
+      v-model="password"
+      placeholder="Digite sua senha"
+    />
+
+    <button type="submit">Logar</button>
+
+    <div class="errorBox">
       <ul>
         <li v-if="errorInputEmail">{{ errorInputEmail }}</li>
         <li v-if="errorInputPassword">{{ errorInputPassword }}</li>
       </ul>
     </div>
-
-    <input placeholder="Digite o email" v-model="email" @focus="!!errorInputEmail" />
-    <input type="password" placeholder="Digite a senha" v-model="password" />
-
-    <button type="submit">Logar</button>
   </form>
 </template>
 
@@ -22,87 +28,106 @@ export default {
       password: '',
 
       errorInputEmail: '',
-      errorInputPassword: ''
+      errorInputPassword: '',
+
+      classInputEmail: '',
+      classInputPassword: ''
     }
   },
   methods: {
     handleLogin() {
+      this.classInputEmail = ''
+      this.classInputPassword = ''
+
       this.errorInputEmail = ''
       this.errorInputPassword = ''
 
-      if (this.email === '') this.errorInputEmail = 'Digite o email'
-      if (this.password === '') this.errorInputPassword = 'Digite a senha'
+      if (this.email === '') {
+        this.errorInputEmail = 'Digite um email válido!'
+        this.classInputEmail = 'inputError'
+      }
+      if (this.password === '') {
+        this.errorInputPassword = 'Digite uma senha válida!'
+        this.classInputPassword = 'inputError'
+      }
       // Login
     },
-    outroMetodo(){
-
-    }
+    outroMetodo() {}
   }
 }
 </script>
 
 <style scoped>
-.error-box {
+.errorBox {
   background: tomato;
   width: 80%;
   color: #fff;
 }
 
-.form-login {
+li {
+  list-style: none;
+}
+
+.formLogin {
   margin: 40px auto;
   width: 40%;
 
+  border: 1px solid #dddddd;
   border-radius: 4px;
-  border: 1px solid #383737;
 
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
-
   padding: 10px;
 }
 
-.input-area {
+.inputArea {
   width: 80%;
 
   display: flex;
   flex-direction: column;
 }
 
-.input-area input {
+.inputArea input {
   width: 100%;
 }
 
-.texto-erro {
-  color: red;
-  margin: 4px;
-}
-
 input {
-  height: 54px;
+  height: 40px;
   width: 80%;
-  border-radius: 8px;
-  border: 1px solid #756767;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
   outline: none;
+  background-color: rgb(250, 250, 250);
 }
 
 button {
   width: 80%;
-  height: 54px;
-  background-color: #3578e5;
+  height: 40px;
+  background-color: #4cb5f9;
 
   color: white;
-  font-size: 18px;
-  border-radius: 8px;
+  font-weight: bold;
   border: none;
+  border-radius: 8px;
 }
 
 button:hover {
-  background-color: #286ee0;
+  background-color: #1877f2;
 }
 
-.input-error {
+.inputError {
   border-color: red;
+}
+
+.textError {
+  color: red;
+  margin: 4px;
+}
+
+img {
+  width: 180px;
+  margin: 40px 0px 20px 0px;
 }
 </style>
