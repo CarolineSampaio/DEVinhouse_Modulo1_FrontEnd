@@ -6,32 +6,37 @@
     <div>
       <label for="nome">Nome Completo</label>
       <input v-model="nome" type="text" id="nome" name="nome" class="formInput" />
+      <span class="textError">{{ errors.nome }}</span>
     </div>
 
     <div>
       <label for="email">Email</label>
       <input v-model="email" type="text" id="email" name="email" class="formInput" />
+      <span class="textError">{{ errors.email }}</span>
     </div>
 
     <div>
       <label for="telefone">Telefone</label>
       <input v-model="telefone" type="text" id="telefone" name="telefone" class="formInput" />
+      <span class="textError">{{ errors.telefone }}</span>
     </div>
 
     <div>
       <label for="password">Senha</label>
       <input v-model="password" type="password" id="password" name="password" class="formInput" />
+      <span class="textError">{{ errors.password }}</span>
     </div>
 
     <div>
-      <label for="confirmPassword">Confirmar Senha</label>
+      <label for="verifyPassword">Confirmar Senha</label>
       <input
-        v-model="confirmPassword"
+        v-model="verifyPassword"
         type="password"
-        id="confirmPassword"
-        name="confirmPassword"
+        id="verifyPassword"
+        name="verifyPassword"
         class="formInput"
       />
+      <span class="textError">{{ errors.verifyPassword }}</span>
     </div>
 
     <div>
@@ -67,16 +72,22 @@
       </div>
     </div>
 
-    <label id="confirmTerms">
-      <input v-model="confirmTerms" type="checkbox" id="termos" name="termos" />
-      Aceitar Termos de Uso
-    </label>
+    <div>
+      <label id="confirmTerms">
+        <input v-model="confirmTerms" type="checkbox" id="termos" name="termos" />
+        Aceitar Termos de Uso
+      </label>
+      <span class="textError">{{ errors.confirmTerms }}</span>
+    </div>
 
     <button type="submit">Criar conta</button>
   </form>
 </template>
 
 <script>
+import * as yup from 'yup'
+import { captureErrorYup } from '../../utils/captureErrorYup'
+
 export default {
   data() {
     return {
@@ -84,16 +95,85 @@ export default {
       email: '',
       telefone: '',
       password: '',
-      confirmPassword: '',
+      verifyPassword: '',
       sponsor: '',
       bio: '',
       confirmTerms: false,
-      planType: '2'
+      planType: '2',
+
+      errors: {}
     }
   },
   methods: {
     handleCreateAccount() {
-      alert('Conta criada com sucesso!')
+      try {
+        const schema = yup.object().shape({
+          nome: yup.string().required('Nome é obrigatório'),
+          email: yup.string().email('Email inválido').required('Email é obrigatório'),
+          telefone: yup.string().required('Telefone é obrigatório'),
+          password: yup
+            .string()
+            .min(8, 'A senha deve ser maior')
+            .max(20, 'Deve ter entre 8-20 letras')
+            .required('A senha é obrigatória'),
+          verifyPassword: yup
+            .string()
+            .required('A confirmação é necessária')
+            .oneOf([yup.ref('password')], 'As senhas devem coincidir'),
+          confirmTerms: yup.boolean().isTrue('O termo de uso deve ser aceito')
+        })
+
+        schema.validateSync(
+          {
+            nome: this.nome,
+            email: this.email,
+            telefone: this.telefone,
+            password: this.password,
+            verifyPassword: this.verifyPassword,
+            confirmTerms: this.confirmTerms
+          },
+          { abortEarly: false }
+        )
+
+        // Cadastro usuario
+        fetch('http://localhost:3000/api/register', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            phone: this.phone,
+            password: this.password,
+            verifyPassword: this.verifyPassword,
+            sponsor: this.sponsor,
+            bio: this.bio,
+            confirmTerms: this.confirmTerms,
+            planType: this.planType
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then((response) => {
+            console.log('entrei aqui no then')
+            if (response.ok === false) {
+              throw new Error()
+            }
+            return response.json()
+          })
+          .then((response) => {
+            console.log(response)
+            alert('Cadastrado com sucesso')
+
+            this.$router.push('/')
+          })
+          .catch(() => {
+            alert('Houve uma falha ao tentar cadastrar')
+          })
+      } catch (error) {
+        if (error instanceof yup.ValidationError) {
+          this.errors = captureErrorYup(error)
+        }
+      }
     }
   }
 }
@@ -162,7 +242,8 @@ button:hover {
 
 .textError {
   color: red;
-  margin: 4px;
+  margin-top: 4px;
+  font-size: 12px;
 }
 
 img {
