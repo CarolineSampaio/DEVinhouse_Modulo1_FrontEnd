@@ -5,25 +5,53 @@
 
     <div>
       <label for="nome">Nome Completo</label>
-      <input v-model="nome" type="text" id="nome" name="nome" class="formInput" />
+      <input
+        v-model="nome"
+        type="text"
+        id="nome"
+        name="nome"
+        class="formInput"
+        :class="{ inputError: this.errors.nome }"
+      />
       <span class="textError">{{ errors.nome }}</span>
     </div>
 
     <div>
       <label for="email">Email</label>
-      <input v-model="email" type="text" id="email" name="email" class="formInput" />
+      <input
+        v-model="email"
+        type="text"
+        id="email"
+        name="email"
+        class="formInput"
+        :class="{ inputError: this.errors.email }"
+      />
       <span class="textError">{{ errors.email }}</span>
     </div>
 
     <div>
       <label for="telefone">Telefone</label>
-      <input v-model="telefone" type="text" id="telefone" name="telefone" class="formInput" />
+      <input
+        v-model="telefone"
+        type="text"
+        id="telefone"
+        name="telefone"
+        class="formInput"
+        :class="{ inputError: this.errors.telefone }"
+      />
       <span class="textError">{{ errors.telefone }}</span>
     </div>
 
     <div>
       <label for="password">Senha</label>
-      <input v-model="password" type="password" id="password" name="password" class="formInput" />
+      <input
+        v-model="password"
+        type="password"
+        id="password"
+        name="password"
+        class="formInput"
+        :class="{ inputError: this.errors.password }"
+      />
       <span class="textError">{{ errors.password }}</span>
     </div>
 
@@ -35,6 +63,7 @@
         id="verifyPassword"
         name="verifyPassword"
         class="formInput"
+        :class="{ inputError: this.errors.verifyPassword }"
       />
       <span class="textError">{{ errors.verifyPassword }}</span>
     </div>
@@ -74,7 +103,13 @@
 
     <div>
       <label id="confirmTerms">
-        <input v-model="confirmTerms" type="checkbox" id="termos" name="termos" />
+        <input
+          v-model="confirmTerms"
+          type="checkbox"
+          id="termos"
+          name="termos"
+          :class="{ inputError: this.errors.confirmTerms }"
+        />
         Aceitar Termos de Uso
       </label>
       <span class="textError">{{ errors.confirmTerms }}</span>
