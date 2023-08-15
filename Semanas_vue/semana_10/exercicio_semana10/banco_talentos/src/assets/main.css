@@ -3,3 +3,14 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  width: 50%;
+  margin: 0 auto;
+
+  font-family:
+    Helvetica Neue,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    sans-serif;
+}
