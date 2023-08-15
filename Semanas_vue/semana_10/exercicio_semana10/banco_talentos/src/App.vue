@@ -11,7 +11,7 @@
         <img width="35" src="./assets/icons/talentIcon.svg" alt="opened-folder" />
       </li>
       <li>
-        <router-link to="/about">About</router-link>
+        <router-link to="/sobre">Sobre</router-link>
         <img width="35" src="./assets/icons/sobreIcon.svg" alt="map-marker--v1" />
       </li>
     </ul>
