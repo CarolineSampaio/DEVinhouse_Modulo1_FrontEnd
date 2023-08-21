@@ -5,26 +5,28 @@
 
     <formulario class="formLogin">
       <div class="formElement">
-        <label for="name">Nome completo</label>
-        <input id="name" v-model="name" />
+        <div>
+          <label for="name">Nome completo</label>
+          <input id="name" v-model="name" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" v-model="email" />
+        </div>
       </div>
 
       <div class="formElement">
-        <label for="email">Email</label>
-        <input id="email" v-model="email" />
+        <div>
+          <label for="birthDate">Data de nascimento</label>
+          <input id="birthDate" v-model="birthDate" />
+        </div>
+        <div>
+          <label for="phone">Whatsapp</label>
+          <input id="phone" v-model="phone" />
+        </div>
       </div>
 
-      <div class="formElement">
-        <label for="birthDate">Data de nascimento</label>
-        <input id="birthDate" v-model="birthDate" />
-      </div>
-
-      <div class="formElement">
-        <label for="phone">Whatsapp</label>
-        <input id="phone" v-model="phone" />
-      </div>
-
-      <div>
+      <div class="formSelect">
         <label for="area">Área de interesse</label>
         <select v-model="area">
           <option value="" disabled selected></option>
@@ -34,7 +36,7 @@
         </select>
       </div>
 
-      <div>
+      <div class="formSelect">
         <label for="nivelProfissional">Nível profissional</label>
         <select v-model="nivel">
           <option value="" disabled selected></option>
@@ -44,7 +46,7 @@
         </select>
       </div>
 
-      <div>
+      <div class="formSelect">
         <p>Suas habilidades:</p>
         <div v-if="area === 'frontend'">
           <label><input type="checkbox" v-model="skills" value="HTML" />HTML</label>
@@ -81,9 +83,7 @@
         ></textarea>
       </div>
 
-      <div>
-        <button type="submit">Cadastrar</button>
-      </div>
+      <button type="submit">Cadastrar</button>
     </formulario>
   </main>
 </template>
@@ -120,5 +120,43 @@ export default {
   margin: 0;
   padding: 0;
   margin-bottom: 2rem;
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formElement {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  gap: 20px;
+}
+
+.formElement div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formSelect {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+  gap: 5px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  margin-bottom: 1rem;
+}
+
+div button {
+  margin-left: auto;
 }
 </style>
