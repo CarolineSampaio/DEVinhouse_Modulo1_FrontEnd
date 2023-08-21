@@ -7,22 +7,22 @@
       <div class="formElement">
         <div>
           <label for="name">Nome completo</label>
-          <input id="name" v-model="name" />
+          <input id="name" v-model="name" class="formInput" />
         </div>
         <div>
           <label for="email">Email</label>
-          <input id="email" v-model="email" />
+          <input id="email" v-model="email" class="formInput" />
         </div>
       </div>
 
       <div class="formElement">
         <div>
           <label for="birthDate">Data de nascimento</label>
-          <input id="birthDate" v-model="birthDate" />
+          <input id="birthDate" v-model="birthDate" class="formInput" />
         </div>
         <div>
           <label for="phone">Whatsapp</label>
-          <input id="phone" v-model="phone" />
+          <input id="phone" v-model="phone" class="formInput" />
         </div>
       </div>
 
@@ -48,7 +48,7 @@
 
       <div class="formSelect">
         <p>Suas habilidades:</p>
-        <div v-if="area === 'frontend'">
+        <div v-if="area === 'frontend'" class="inputBox">
           <label><input type="checkbox" v-model="skills" value="HTML" />HTML</label>
           <label><input type="checkbox" v-model="skills" value="CSS" />CSS</label>
           <label><input type="checkbox" v-model="skills" value="JavaScript" />JavaScript</label>
@@ -57,7 +57,7 @@
           <label><input type="checkbox" v-model="skills" value="Angular" />Angular</label>
         </div>
 
-        <div v-if="area === 'backend'">
+        <div v-if="area === 'backend'" class="inputBox">
           <label><input type="checkbox" v-model="skills" value="Python" />Python</label>
           <label><input type="checkbox" v-model="skills" value="PHP" />PHP</label>
           <label><input type="checkbox" v-model="skills" value="Ruby" />Ruby</label>
@@ -66,7 +66,7 @@
           <label><input type="checkbox" v-model="skills" value="Node" />Node</label>
         </div>
 
-        <div v-if="area === 'fullstack' || area === ''">
+        <div v-if="area === 'fullstack' || area === ''" class="inputBox">
           <label><input type="checkbox" v-model="skills" value="HTML" />HTML</label>
           <label><input type="checkbox" v-model="skills" value="CSS" />CSS</label>
           <label><input type="checkbox" v-model="skills" value="JavaScript" />JavaScript</label>
@@ -135,28 +135,83 @@ export default {
   gap: 20px;
 }
 
-.formElement div {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
+.formElement div,
 .formSelect {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 1rem;
   gap: 5px;
 }
 
-textarea {
+.formSelect {
+  margin-bottom: 1rem;
+}
+
+.formInput,
+textarea,
+select {
+  height: 38px;
   width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  outline: none;
+  background-color: rgb(250, 250, 250);
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+textarea {
   height: 100px;
   resize: none;
   margin-bottom: 1rem;
+  font-family:
+    Helvetica Neue,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    sans-serif;
+  padding-top: 5px;
+}
+
+.inputBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.inputBox label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+}
+
+input[type='checkbox']:checked {
+  accent-color: #0a7172;
 }
 
 div button {
   margin-left: auto;
+}
+
+button {
+  width: 15%;
+  height: 38px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: #0a7172;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e8c860;
 }
 </style>
