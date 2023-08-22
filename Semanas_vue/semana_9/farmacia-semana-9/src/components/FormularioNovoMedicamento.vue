@@ -1,13 +1,14 @@
 <template>
   <main>
     <h3>Formulário de cadastro - novo medicamento:</h3>
-    <form class="formCadastro">
+    <form class="formCadastro" @submit.prevent="cadastrarMedicamento">
       <div class="conteinerInput">
         <label for="nome">Nome do medicamento</label>
         <input
           type="text"
           id="nome"
           placeholder="Informe o nome do medicamento"
+          v-model="nome"
         />
       </div>
       <div class="conteinerInput">
@@ -16,6 +17,7 @@
           type="text"
           id="laboratorio"
           placeholder="Informe o nome do laboratório"
+          v-model="laboratorio"
         />
       </div>
       <div class="conteinerInput">
@@ -25,6 +27,7 @@
           step="0.01"
           id="preco"
           placeholder="Informe o preço"
+          v-model="preco"
         />
       </div>
       <button type="submit">Cadastrar</button>
@@ -35,6 +38,25 @@
 <script>
 export default {
   name: "FormularioNovoMedicamento",
+  data() {
+    return {
+      id: 0,
+      nome: "",
+      laboratorio: "",
+      preco: 0,
+      favorito: false,
+    };
+  },
+  methods: {
+    cadastrarMedicamento() {
+      this.$emit("cadastrar", {
+        nome: this.nome,
+        laboratorio: this.laboratorio,
+        preco: this.preco,
+        favorito: this.favorito,
+      });
+    },
+  },
 };
 </script>
 

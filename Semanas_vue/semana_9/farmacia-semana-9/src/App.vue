@@ -1,12 +1,10 @@
 <template>
-  <div></div>
   <div>
     <Header />
-    <FormularioNovoMedicamento />
+    <FormularioNovoMedicamento @cadastrar="adicionarMedicamento" />
   </div>
 </template>
 
-<script></script>
 <script>
 import Header from "./components/Header.vue";
 import FormularioNovoMedicamento from "./components/FormularioNovoMedicamento.vue";
@@ -18,9 +16,29 @@ export default {
       listaMedicamentos: [],
     };
   },
+
   components: {
     Header,
     FormularioNovoMedicamento,
+  },
+
+  methods: {
+    adicionarMedicamento({ nome, laboratorio, preco, favorito }) {
+      if (!nome || !laboratorio || !preco) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      this.listaMedicamentos.push({
+        id: this.listaMedicamentos.length + 1,
+        nome,
+        laboratorio,
+        preco,
+        favorito,
+      });
+
+      console.log(this.listaMedicamentos);
+    },
   },
 };
 </script>
