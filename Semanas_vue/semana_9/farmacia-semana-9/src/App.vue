@@ -1,7 +1,19 @@
 <template>
-  <h1>Exercicio semana 9</h1>
+  <div></div>
+  <div>
+    <Header />
+  </div>
 </template>
 
 <script></script>
+<script>
+import Header from "./components/Header.vue";
+export default {
+  name: "App",
+  components: {
+    Header,
+  },
+};
+</script>
 
 <style scoped></style>
