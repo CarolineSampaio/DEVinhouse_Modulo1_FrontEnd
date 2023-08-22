@@ -24,7 +24,7 @@ export default {
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink :to="{ name: 'sobre', params: { nome: 'Bruno' } }"
+        <RouterLink :to="{ name: 'sobre', params: { id: 1 } }"
           >Sobre</RouterLink
         >
       </nav>

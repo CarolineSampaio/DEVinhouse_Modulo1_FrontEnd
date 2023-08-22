@@ -11,7 +11,7 @@ export const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/sobre/:nome",
+      path: "/sobre/:id",
       name: "sobre",
       component: AboutView,
     },

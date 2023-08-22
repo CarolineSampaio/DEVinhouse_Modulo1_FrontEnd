@@ -1,22 +1,29 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    {{ nome }}
+    {{ cliente }}
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      nome: "",
+      id: 1,
+      cliente: {},
     };
   },
   mounted() {
     console.log(this.$route);
-    if (!!this.$route.params.nome) {
-      this.nome = this.$route.params.nome;
+    if (!!this.$route.params.id) {
+      this.id = this.$route.params.id;
     }
+
+    axios
+      .get(`http://localhost:50001/clientes/${this.id}`)
+      .then((res) => (this.cliente = res.data));
   },
 };
 </script>
