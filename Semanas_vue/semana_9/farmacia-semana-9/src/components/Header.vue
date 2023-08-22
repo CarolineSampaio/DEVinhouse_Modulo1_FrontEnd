@@ -10,4 +10,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+header {
+  height: 80px;
+  padding-left: 215px;
+  background-color: #cfd8dc;
+}
+img {
+  margin-top: 5px;
+  height: 70px;
+  opacity: 0.9;
+}
+</style>
