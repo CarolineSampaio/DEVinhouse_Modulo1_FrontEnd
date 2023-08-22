@@ -9,17 +9,17 @@
           <label for="name">Nome completo</label>
           <input
             id="name"
-            v-model="name"
+            v-model="talent.name"
             class="formInput"
-            :class="{ inputError: this.errors.nome }"
+            :class="{ inputError: this.errors.name }"
           />
-          <span class="textError">{{ errors.nome }}</span>
+          <span class="textError">{{ errors.name }}</span>
         </div>
         <div>
           <label for="email">Email</label>
           <input
             id="email"
-            v-model="email"
+            v-model="talent.email"
             class="formInput"
             :class="{ inputError: this.errors.email }"
           />
@@ -32,7 +32,7 @@
           <label for="birthDate">Data de nascimento</label>
           <input
             id="birthDate"
-            v-model="birthDate"
+            v-model="talent.birthDate"
             class="formInput"
             :class="{ inputError: this.errors.birthDate }"
           />
@@ -42,7 +42,7 @@
           <label for="phone">Whatsapp</label>
           <input
             id="phone"
-            v-model="phone"
+            v-model="talent.phone"
             class="formInput"
             :class="{ inputError: this.errors.phone }"
           />
@@ -52,7 +52,7 @@
 
       <div class="formSelect">
         <label for="area">Área de interesse</label>
-        <select v-model="area" :class="{ inputError: this.errors.area }">
+        <select v-model="talent.area" :class="{ inputError: this.errors.area }">
           <option value="" disabled selected></option>
           <option value="frontend">FrontEnd</option>
           <option value="backend">BackEnd</option>
@@ -63,7 +63,7 @@
 
       <div class="formSelect">
         <label for="nivelProfissional">Nível profissional</label>
-        <select v-model="nivel" :class="{ inputError: this.errors.nivel }">
+        <select v-model="talent.nivel" :class="{ inputError: this.errors.nivel }">
           <option value="" disabled selected></option>
           <option value="junior">Junior</option>
           <option value="pleno">Pleno</option>
@@ -74,38 +74,42 @@
 
       <div class="formSelect">
         <p>Suas habilidades:</p>
-        <div v-if="area === 'frontend'" class="inputBox">
-          <label><input type="checkbox" v-model="skills" value="HTML" />HTML</label>
-          <label><input type="checkbox" v-model="skills" value="CSS" />CSS</label>
-          <label><input type="checkbox" v-model="skills" value="JavaScript" />JavaScript</label>
-          <label><input type="checkbox" v-model="skills" value="React" />React</label>
-          <label><input type="checkbox" v-model="skills" value="Vue" />Vue</label>
-          <label><input type="checkbox" v-model="skills" value="Angular" />Angular</label>
+        <div v-if="talent.area === 'frontend'" class="inputBox">
+          <label><input type="checkbox" v-model="talent.skills" value="HTML" />HTML</label>
+          <label><input type="checkbox" v-model="talent.skills" value="CSS" />CSS</label>
+          <label
+            ><input type="checkbox" v-model="talent.skills" value="JavaScript" />JavaScript</label
+          >
+          <label><input type="checkbox" v-model="talent.skills" value="React" />React</label>
+          <label><input type="checkbox" v-model="talent.skills" value="Vue" />Vue</label>
+          <label><input type="checkbox" v-model="talent.skills" value="Angular" />Angular</label>
         </div>
 
-        <div v-if="area === 'backend'" class="inputBox">
-          <label><input type="checkbox" v-model="skills" value="Python" />Python</label>
-          <label><input type="checkbox" v-model="skills" value="PHP" />PHP</label>
-          <label><input type="checkbox" v-model="skills" value="Ruby" />Ruby</label>
-          <label><input type="checkbox" v-model="skills" value="Java" />Java</label>
-          <label><input type="checkbox" v-model="skills" value="C#" />C#</label>
-          <label><input type="checkbox" v-model="skills" value="Node" />Node</label>
+        <div v-if="talent.area === 'backend'" class="inputBox">
+          <label><input type="checkbox" v-model="talent.skills" value="Python" />Python</label>
+          <label><input type="checkbox" v-model="talent.skills" value="PHP" />PHP</label>
+          <label><input type="checkbox" v-model="talent.skills" value="Ruby" />Ruby</label>
+          <label><input type="checkbox" v-model="talent.skills" value="Java" />Java</label>
+          <label><input type="checkbox" v-model="talent.skills" value="C#" />C#</label>
+          <label><input type="checkbox" v-model="talent.skills" value="Node" />Node</label>
         </div>
 
-        <div v-if="area === 'fullstack' || area === ''" class="inputBox">
-          <label><input type="checkbox" v-model="skills" value="HTML" />HTML</label>
-          <label><input type="checkbox" v-model="skills" value="CSS" />CSS</label>
-          <label><input type="checkbox" v-model="skills" value="JavaScript" />JavaScript</label>
-          <label><input type="checkbox" v-model="skills" value="React" />React</label>
-          <label><input type="checkbox" v-model="skills" value="Vue" />Vue</label>
-          <label><input type="checkbox" v-model="skills" value="Angular" />Angular</label>
+        <div v-if="talent.area === 'fullstack' || talent.area === ''" class="inputBox">
+          <label><input type="checkbox" v-model="talent.skills" value="HTML" />HTML</label>
+          <label><input type="checkbox" v-model="talent.skills" value="CSS" />CSS</label>
+          <label
+            ><input type="checkbox" v-model="talent.skills" value="JavaScript" />JavaScript</label
+          >
+          <label><input type="checkbox" v-model="talent.skills" value="React" />React</label>
+          <label><input type="checkbox" v-model="talent.skills" value="Vue" />Vue</label>
+          <label><input type="checkbox" v-model="talent.skills" value="Angular" />Angular</label>
         </div>
         <span class="textError">{{ errors.skills }}</span>
       </div>
 
       <div>
         <textarea
-          v-model="presentation"
+          v-model="talent.presentation"
           placeholder="Digite aqui sua carta de apresentação"
           :class="{ inputError: this.errors.presentation }"
         ></textarea>
@@ -119,19 +123,21 @@
 
 <script>
 import * as yup from 'yup'
+import axios from 'axios'
 
 export default {
   data() {
     return {
-      name: '',
-      email: '',
-      birthDate: '',
-      phone: '',
-      area: '',
-      nivel: '',
-      skills: [],
-      presentation: '',
-
+      talent: {
+        name: '',
+        email: '',
+        birthDate: '',
+        phone: '',
+        area: '',
+        nivel: '',
+        skills: [],
+        presentation: ''
+      },
       errors: {}
     }
   },
@@ -139,7 +145,7 @@ export default {
     handleSubmit() {
       try {
         const schema = yup.object().shape({
-          nome: yup.string().required('Nome é obrigatório!'),
+          name: yup.string().required('Nome é obrigatório!'),
           email: yup.string().email('Email inválido').required('Email é obrigatório!'),
           birthDate: yup.string().required('Data de nascimento é obrigatória!'),
           phone: yup.string().required('Whatsapp é obrigatório!'),
@@ -149,19 +155,28 @@ export default {
           presentation: yup.string().required('Carta de apresentação é obrigatória!')
         })
 
-        schema.validateSync(
-          {
-            nome: this.name,
-            email: this.email,
-            birthDate: this.birthDate,
-            phone: this.phone,
-            area: this.area,
-            nivel: this.nivel,
-            skills: this.skills,
-            presentation: this.presentation
-          },
-          { abortEarly: false }
-        )
+        schema.validateSync(this.talent, { abortEarly: false })
+
+        axios
+          .post('http://localhost:50001/talentos', this.talent)
+          .then(() => {
+            this.errors = {}
+            alert('Talento cadastrado com sucesso!')
+            this.talent = {
+              name: '',
+              email: '',
+              birthDate: '',
+              phone: '',
+              area: '',
+              nivel: '',
+              skills: [],
+              presentation: ''
+            }
+          })
+          .catch((error) => {
+            alert('Erro ao cadastrar talento!')
+            console.log(error)
+          })
       } catch (error) {
         const captureErrorYup = (error) =>
           error.inner.reduce((acc, currentValue) => {
@@ -172,13 +187,12 @@ export default {
 
         this.errors = captureErrorYup(error)
       }
-    },
-
-    watch: {
-      area(newValue, oldValue) {
-        if (newValue !== oldValue) {
-          this.skills = []
-        }
+    }
+  },
+  watch: {
+    area(newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.skills = []
       }
     }
   }
