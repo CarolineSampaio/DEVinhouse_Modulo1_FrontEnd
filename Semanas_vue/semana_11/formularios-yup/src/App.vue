@@ -1,92 +1,83 @@
+<!-- Exemplo formulário usando vee-validate  -->
 <template>
   <h1>Formulário de cadastro de cliente</h1>
-  <form @submit.prevent="handleSubmit">
+  <Form @submit="handleSubmit" :validation-schema="schema" v-slot="{ errors }">
     <label for="nome">Nome</label>
-    <input
+    <Field
       type="text"
       id="nome"
       name="nome"
       placeholder="Digite seu nome"
       v-model="nome"
     />
-    {{ this.erros.nome }}
+    {{ errors.nome }}
 
     <label for="idade">Idade</label>
-    <input
+    <Field
       type="number"
       id="idade"
       name="idade"
       placeholder="Digite sua idade"
       v-model="idade"
     />
-    {{ this.erros.idade }}
+    {{ errors.idade }}
 
     <label for="email">E-mail</label>
-    <input
+    <Field
       type="email"
       id="email"
       name="email"
       placeholder="Digite seu e-mail"
       v-model="email"
     />
-    {{ this.erros.email }}
+    {{ errors.email }}
 
     <button type="submit">Cadastrar usuário</button>
-  </form>
+  </Form>
 </template>
 
 <script>
 import * as yup from "yup";
-import { captureErrorYup } from "./utils/captureErrorYup";
+import { Form, Field } from "vee-validate";
 
 export default {
+  components: {
+    Form,
+    Field,
+  },
+
   data() {
     return {
       nome: "",
       idade: 0,
       email: "",
 
-      erros: {},
+      schema: yup.object().shape({
+        nome: yup
+          .string()
+          .required("Por favor, digite seu nome!")
+          .min(3, "Por favor, digite um nome com no mínimo 3 caracteres!"),
+        idade: yup
+          .number()
+          .required()
+          .test(
+            "idade",
+            "Por favor, digite sua idade!",
+            (value) => value !== 0
+          ),
+        email: yup
+          .string()
+          .email()
+          .required("Por favor, digite um e-mail válido!"),
+      }),
     };
   },
   methods: {
     handleSubmit() {
-      try {
-        const usuarioSchema = yup.object().shape({
-          nome: yup
-            .string()
-            .required()
-            .min(3, "Por favor, digite um nome com no mínimo 3 caracteres!"),
-          idade: yup
-            .number()
-            .required()
-            .test(
-              "idade",
-              "Por favor, digite sua idade!",
-              (value) => value !== 0
-            ),
-          email: yup
-            .string()
-            .email()
-            .required("Por favor, digite um e-mail válido!"),
-        });
-
-        usuarioSchema.validateSync(
-          {
-            nome: this.nome,
-            idade: this.idade,
-            email: this.email,
-          },
-          { abortEarly: false }
-        );
-
-        alert("Formulário enviado");
-      } catch (error) {
-        if (error instanceof yup.ValidationError) {
-          this.erros = captureErrorYup(error);
-          alert("erro");
-        }
-      }
+      alert("Usuário cadastrado com sucesso!");
+      console.log(this.nome);
+      console.log(this.idade);
+      console.log(this.email);
     },
   },
 };
