@@ -1,9 +1,9 @@
 <template>
   <main>
-    <h3>Formulário de cadastro - novo medicamento:</h3>
+    <h2>Formulário de cadastro de medicamentos</h2>
     <form class="formCadastro" @submit.prevent="cadastrarMedicamento">
       <div class="conteinerInput">
-        <label for="nome">Nome do medicamento</label>
+        <label for="nome">Nome</label>
         <input
           type="text"
           id="nome"
@@ -12,7 +12,7 @@
         />
       </div>
       <div class="conteinerInput">
-        <label for="laboratorio">Nome do laboratório</label>
+        <label for="laboratorio">Laboratório</label>
         <input
           type="text"
           id="laboratorio"
@@ -78,9 +78,8 @@ main {
   box-shadow: 0px 0px 15px rgba(27, 111, 170, 0.2);
 }
 
-h3 {
-  text-align: center;
-  margin-bottom: 20px;
+h2 {
+  margin: 20px 10% 30px;
   color: #155786;
 }
 
@@ -117,7 +116,7 @@ input {
 }
 
 button {
-  width: 10%;
+  width: 15%;
   height: 35px;
   border: 1px solid #ccc;
   border-radius: 4px;
