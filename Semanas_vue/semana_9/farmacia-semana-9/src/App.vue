@@ -39,6 +39,16 @@ export default {
 
       console.log(this.listaMedicamentos);
     },
+
+    favoritarMedicamento(id) {
+      const medicamento = this.listaMedicamentos.find(
+        (medicamento) => medicamento.id === id
+      );
+
+      medicamento.favorito = !medicamento.favorito;
+
+      console.log(this.listaMedicamentos);
+    },
   },
 };
 </script>
