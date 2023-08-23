@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="lista.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="imagens/logo.png" alt="logo toptour turismo" />
+      </div>
+
+      <h1>Gerenciamento de Reservas</h1>
+
+      <div class="botoes">
+        <a href="cadastro.html"><button>Nova Reserva</button></a>
+        <button id="logout">Logout</button>
+      </div>
+    </header>
+
+    <section>
+      <table class="containerReservas">
+        <thead>
+          <tr>
+            <th>N° quarto</th>
+            <th>Cliente</th>
+            <th class="linhaCpf">CPF</th>
+            <th>Período</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabela"></tbody>
+      </table>
+    </section>
+
+    <script src="./scripts/home.js" type="module"></script>
+  </body>
+</html>

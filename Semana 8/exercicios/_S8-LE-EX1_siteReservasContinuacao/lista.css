@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+}
+
+body {
+  margin: 0px 200px;
+}
+
+img {
+  width: 10%;
+  margin: -20px -180px;
+  position: absolute;
+}
+
+h1 {
+  color: #1f5d82;
+  margin: 40px 0px 20px;
+  margin-left: 24px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px;
+}
+
+.containerReservas {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow: scroll;
+  margin-bottom: 20px;
+}
+
+.containerReservas tr {
+  border: 1px solid #dddddd;
+  border-left: none;
+  border-right: none;
+}
+
+.containerReservas th,
+.containerReservas td {
+  padding: 14px;
+  text-align: center;
+  color: #1f5d82;
+}
+
+.containerReservas td {
+  color: #353535;
+}
+
+.containerReservas thead tr {
+  border: none;
+}
+
+.containerReservas tbody tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+button {
+  height: 35px;
+  padding: 0px 20px;
+  background-color: #fdfdfd;
+
+  color: #353535;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #f87847;
+  color: white;
+  border: none;
+}

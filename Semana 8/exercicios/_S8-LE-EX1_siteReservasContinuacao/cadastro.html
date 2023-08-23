@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cadastro.css" />
+    <title>Nova Reserva</title>
+  </head>
+  <body>
+    <div class="logo">
+      <img src="imagens/logo.png" alt="logo toptour turismo" />
+    </div>
+    <form class="formulario" id="reservar">
+      <h1>Nova Reserva</h1>
+      <label for="Quarto"></label>
+      <span>N° Quarto:</span>
+      <select id="nQuarto">
+        <option value="" disabled selected>Selecione o Quarto</option>
+        <option value="101">Quarto 101</option>
+        <option value="102">Quarto 102</option>
+        <option value="103">Quarto 103</option>
+        <option value="104">Quarto 104</option>
+      </select>
+      <span id="nQuartoError" class="textoErro"></span>
+
+      <label for="nome"></label>
+      <span>Nome Completo:</span>
+      <input type="text" id="nome" />
+      <span id="nomeError" class="textoErro"></span>
+
+      <label for="cpf"></label>
+      <span>CPF:</span>
+      <input type="text" id="cpf" />
+      <span id="cpfError" class="textoErro"></span>
+
+      <label for="dataEntrada"></label>
+      <span>Entrada:</span>
+      <input type="date" id="dataEntrada" />
+      <span id="dataEntradaError" class="textoErro"></span>
+
+      <label for="dataSaida"></label>
+      <span>Saida:</span>
+      <input type="date" id="dataSaida" />
+      <span id="dataSaidaError" class="textoErro"></span>
+
+      <button type="submit" id="botaoReservar">Reservar</button>
+    </form>
+    <script src="scripts/cadastro.js" type="module"></script>
+  </body>
+</html>

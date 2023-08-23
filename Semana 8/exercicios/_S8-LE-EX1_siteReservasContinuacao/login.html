@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Reservas</title>
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <div class="logo">
+      <img src="imagens/logo.png" alt="logo toptour turismo" />
+    </div>
+    <form class="formulario" id="login">
+      <h1>Admin Login</h1>
+
+      <label for="txtEmail">Email</label>
+      <input type="text" id="email" />
+      <span id="emailError" class="textoErro"></span>
+
+      <label for="txtSenha">Senha</label>
+      <input type="password" id="senha" />
+      <span id="senhaError" class="textoErro"></span>
+
+      <button type="submit" id="botaoLogin">Login</button>
+      <span id="loginError" class="textoErro"></span>
+    </form>
+    <script src="scripts/login.js" type="module"></script>
+  </body>
+</html>
