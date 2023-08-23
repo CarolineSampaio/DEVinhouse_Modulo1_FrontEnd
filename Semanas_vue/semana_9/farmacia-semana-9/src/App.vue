@@ -2,24 +2,42 @@
   <div>
     <Header />
     <FormularioNovoMedicamento @cadastrar="adicionarMedicamento" />
+    <CardMedicamento
+      :id="1"
+      nome="Ibuprofeno"
+      laboratorio="Laboratório XYZ"
+      :preco="15.99"
+      :favorito="false"
+      @favoritar="favoritarMedicamento"
+    />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import FormularioNovoMedicamento from "./components/FormularioNovoMedicamento.vue";
+import CardMedicamento from "./components/CardMedicamento.vue";
 
 export default {
   name: "App",
   data() {
     return {
-      listaMedicamentos: [],
+      listaMedicamentos: [
+        {
+          id: 1,
+          nome: "Ibuprofeno",
+          laboratorio: "Laboratório XYZ",
+          preco: 15.99,
+          favorito: false,
+        },
+      ],
     };
   },
 
   components: {
     Header,
     FormularioNovoMedicamento,
+    CardMedicamento,
   },
 
   methods: {
@@ -41,13 +59,18 @@ export default {
     },
 
     favoritarMedicamento(id) {
-      const medicamento = this.listaMedicamentos.find(
+      const favoritar = document.querySelector(".heart");
+      const index = this.listaMedicamentos.findIndex(
         (medicamento) => medicamento.id === id
       );
+      this.listaMedicamentos[index].favorito =
+        !this.listaMedicamentos[index].favorito;
 
-      medicamento.favorito = !medicamento.favorito;
-
-      console.log(this.listaMedicamentos);
+      if (this.listaMedicamentos[index].favorito === true) {
+        favoritar.classList.add("active");
+      } else {
+        favoritar.classList.remove("active");
+      }
     },
   },
 };
