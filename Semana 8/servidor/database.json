@@ -1,0 +1,28 @@
+{
+  "usuarios": [
+    {
+      "email": "henrique@gmail.com",
+      "telefone": "8596426462",
+      "nomeCompleto": "henrique douglas",
+      "nomeUsuario": "henr",
+      "senha": "devinhouse12345",
+      "id": 1
+    },
+    {
+      "email": "teste@gmail.com",
+      "telefone": "8596426462",
+      "nomeCompleto": "teste teste",
+      "nomeUsuario": "tessste",
+      "senha": "testando12345",
+      "id": 2
+    },
+    {
+      "email": "caroline@hotmail.com",
+      "telefone": "11900001111",
+      "nomeCompleto": "Caroline dos Santos Sampai",
+      "nomeUsuario": "caroli",
+      "senha": "testando1234",
+      "id": 3
+    }
+  ]
+}

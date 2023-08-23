@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="S8_estiloCadastro.css" />
+    <link
+      rel="shortcut icon"
+      href="https://static.cdninstagram.com/rsrc.php/v3/yR/r/lam-fZmwmvn.png"
+      type="png"
+    />
+    <title>Cadastro</title>
+  </head>
+
+  <body>
+    <form class="formulario" id="formCadastro">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png"
+        alt="Logo do instagram"
+        width="180px"
+      />
+
+      <p>Cadastre-se para ver fotos e vídeos de seus amigos.</p>
+
+      <div class="inputArea">
+        <input id="campoEmail" type="email" placeholder="Email" autofocus />
+        <span id="errorEmail" class="textoErro" hidden></span>
+      </div>
+
+      <div class="inputArea">
+        <input id="campoTelefone" type="tel" placeholder="Número do celular" />
+        <span id="errorTelefone" class="textoErro" hidden></span>
+      </div>
+
+      <div class="inputArea">
+        <input id="campoNomeCompleto" type="text" placeholder="Nome completo" />
+        <span id="errorNome" class="textoErro" hidden></span>
+      </div>
+
+      <div class="inputArea">
+        <input
+          id="campoNomeUsuario"
+          type="text"
+          placeholder="Nome de usuário"
+        />
+        <span id="errorUsuario" class="textoErro" hidden></span>
+      </div>
+
+      <div class="inputArea">
+        <input id="campoSenha" type="password" placeholder="Senha" />
+        <span id="errorSenha" class="textoErro" hidden></span>
+      </div>
+
+      <button id="loginButton" type="submit">Cadastre-se</button>
+    </form>
+
+    <section class="formulario cadastro">
+      <span>Tem uma conta?</span><a href="S8_loginInstagram.html">Conecte-se</a>
+    </section>
+
+    <script src="./scripts/S8_Cadastro.js" type="module"></script>
+  </body>
+</html>
