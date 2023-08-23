@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div class="main">
     <h2>Formulário de cadastro de medicamentos</h2>
     <form class="formCadastro" @submit.prevent="cadastrarMedicamento">
       <div class="conteinerInput">
@@ -32,7 +32,7 @@
       </div>
       <button type="submit">Cadastrar</button>
     </form>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -68,8 +68,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-main {
+.main {
   width: 100%;
 
   background-color: #fff;

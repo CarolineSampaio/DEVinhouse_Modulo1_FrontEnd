@@ -1,9 +1,10 @@
 <template>
-  <main>
+  <div class="main">
     <section class="cardMedicamento">
       <div class="favoritar">
         <svg
           class="heart"
+          :class="{ active: favorito }"
           @click="favoritar()"
           enable-background="new 0 0 50 46"
           version="1.1"
@@ -18,11 +19,7 @@
         </svg>
       </div>
       <div class="image">
-        <img
-          width="220px"
-          src="../assets/placeholder-image.png"
-          alt="placeholder image"
-        />
+        <img src="../assets/placeholder-image.png" alt="placeholder image" />
       </div>
       <div class="informações">
         <h3>{{ nome }}</h3>
@@ -30,7 +27,7 @@
         <h3>R$ {{ preco }}</h3>
       </div>
     </section>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -51,12 +48,12 @@ export default {
 </script>
 
 <style scoped>
-main {
-  width: 80%;
+.main {
+  width: 100%;
   height: 100%;
   display: flex;
   margin: 0 auto;
-  padding: 50px;
+  padding-top: 50px;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -101,6 +98,7 @@ main {
 }
 
 img {
+  width: 220px;
   opacity: 0.4;
 }
 
@@ -109,7 +107,6 @@ img {
   flex-direction: column;
   gap: 5px;
   color: #155786;
-
   padding: 10px 20px;
 }
 </style>
