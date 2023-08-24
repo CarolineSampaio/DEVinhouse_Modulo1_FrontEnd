@@ -123,6 +123,7 @@
 
 <script>
 import * as yup from 'yup'
+import { captureErrorYup } from '../../utils/captureErrorYup'
 import axios from 'axios'
 
 export default {
@@ -178,14 +179,9 @@ export default {
             console.log(error)
           })
       } catch (error) {
-        const captureErrorYup = (error) =>
-          error.inner.reduce((acc, currentValue) => {
-            const data = { ...acc }
-            data[currentValue.path] = currentValue.message
-            return data
-          }, {})
-
-        this.errors = captureErrorYup(error)
+        if (error instanceof yup.ValidationError) {
+          this.errors = captureErrorYup(error)
+        }
       }
     }
   },
