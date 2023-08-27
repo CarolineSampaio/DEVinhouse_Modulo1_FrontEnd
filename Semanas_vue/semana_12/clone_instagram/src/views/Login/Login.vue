@@ -56,7 +56,10 @@ export default {
             email: this.email,
             password: this.password
           })
-          .then(() => {
+          .then((response) => {
+            localStorage.setItem('instagram_token', response.data.token)
+            localStorage.setItem('instagram_name', response.data.name)
+
             console.log('logado com sucesso')
             this.$router.push('/home')
           })
