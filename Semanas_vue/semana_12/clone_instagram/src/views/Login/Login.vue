@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -49,7 +51,18 @@ export default {
       if (this.password === '') this.errorInputPassword = 'Digite uma senha válida!'
 
       if (!this.errorInputEmail && !this.errorInputPassword) {
-        this.$router.push('/home')
+        axios
+          .post('http://localhost:3000/api/login', {
+            email: this.email,
+            password: this.password
+          })
+          .then(() => {
+            console.log('logado com sucesso')
+            this.$router.push('/home')
+          })
+          .catch(() => {
+            alert('Falha ao realizar login!')
+          })
       }
     },
     outroMetodo() {}
