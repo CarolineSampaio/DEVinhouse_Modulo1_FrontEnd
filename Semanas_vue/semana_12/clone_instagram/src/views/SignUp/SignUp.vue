@@ -122,6 +122,7 @@
 <script>
 import * as yup from 'yup'
 import { captureErrorYup } from '../../utils/captureErrorYup'
+import axios from 'axios'
 
 export default {
   data() {
@@ -170,42 +171,33 @@ export default {
           { abortEarly: false }
         )
 
-        // Cadastro usuario
-        fetch('http://localhost:3000/api/register', {
-          method: 'POST',
-          body: JSON.stringify({
-            name: this.name,
+        axios
+          .post('http://localhost:3000/api/register', {
+            name: this.nome,
             email: this.email,
-            phone: this.phone,
+            contact: this.telefone,
             password: this.password,
-            verifyPassword: this.verifyPassword,
             sponsor: this.sponsor,
             bio: this.bio,
             confirmTerms: this.confirmTerms,
             planType: this.planType
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-          .then((response) => {
-            console.log('entrei aqui no then')
-            if (response.ok === false) {
-              throw new Error()
-            }
-            return response.json()
           })
-          .then((response) => {
-            console.log(response)
+          .then(() => {
             alert('Cadastrado com sucesso')
 
             this.$router.push('/')
           })
-          .catch(() => {
-            alert('Houve uma falha ao tentar cadastrar')
+          .catch((error) => {
+            console.log(error)
+            if (error.response?.data?.message) {
+              alert(error.response.data.message)
+            } else {
+              alert('Houve uma falha ao tentar cadastrar')
+            }
           })
       } catch (error) {
         if (error instanceof yup.ValidationError) {
+          console.log(error)
           this.errors = captureErrorYup(error)
         }
       }
