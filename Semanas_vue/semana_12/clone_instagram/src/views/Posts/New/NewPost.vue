@@ -46,16 +46,33 @@ export default {
             url: this.url
           },
           { abortEarly: false }
-        ) // importante
-        axios({
-          url: 'http://localhost:3000/api/posts',
-          method: 'post',
-          data: {
-            title: this.title,
-            description: this.description,
-            url: this.url
-          }
-        })
+        )
+
+        const token = localStorage.getItem('instagram_token')
+
+        axios
+          .post(
+            'http://localhost:3000/api/posts',
+            {
+              title: this.title,
+              description: this.description,
+              url: this.url
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }
+          )
+          .then(() => {
+            alert('Post cadastrado com sucesso!')
+            this.title = ''
+            this.url = ''
+            this.description = ''
+          })
+          .catch(() => {
+            alert('Erro ao cadastrar post!')
+          })
       } catch (error) {
         if (error instanceof yup.ValidationError) {
           this.errors = captureErrorYup(error)
