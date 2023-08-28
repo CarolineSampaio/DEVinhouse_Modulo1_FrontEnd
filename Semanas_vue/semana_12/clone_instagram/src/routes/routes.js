@@ -4,6 +4,7 @@ import Home from '../views/Home/Home.vue'
 import Login from '../views/Login/Login.vue'
 import SignUp from '../views/SignUp/SignUp.vue'
 import NewPost from '../views/Posts/New/NewPost.vue'
+import ListPosts from '../views/Posts/List/ListPost.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/posts/novo',
       name: 'NewPost',
       component: NewPost
+    },
+    {
+      path: '/posts',
+      name: 'ListPosts',
+      component: ListPosts
     }
   ]
 })
