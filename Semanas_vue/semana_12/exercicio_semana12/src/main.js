@@ -10,6 +10,8 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
+import store from './store/index.js'
+
 const vuetify = createVuetify({
   components,
   directives,
@@ -18,4 +20,4 @@ const vuetify = createVuetify({
   }
 })
 
-createApp(App).use(router).use(vuetify).mount('#app')
+createApp(App).use(router).use(store).use(vuetify).mount('#app')
