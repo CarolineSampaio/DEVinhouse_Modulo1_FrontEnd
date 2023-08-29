@@ -31,7 +31,7 @@
           class="mt-1 font-weight-bold"
           variant="flat"
           color="yellow-darken-3 text-white"
-          @click="() => adicionarProduto(product)"
+          @click="() => this.$store.dispatch('adicionarProduto', { product })"
         >
           Comprar
         </v-btn>
