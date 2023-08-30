@@ -22,7 +22,11 @@
         </v-card-text>
 
         <v-card-subtitle class="text-subtitle-1 font-weight-bold pl-2">
-          R${{ product.preco }}
+          {{
+            new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
+              product.preco
+            )
+          }}
         </v-card-subtitle>
       </div>
 
