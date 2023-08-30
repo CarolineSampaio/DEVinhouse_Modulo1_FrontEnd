@@ -79,6 +79,7 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+  margin-bottom: 50px;
 }
 
 h1 {
