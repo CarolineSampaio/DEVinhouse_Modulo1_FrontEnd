@@ -1,0 +1,74 @@
+{
+  "medicamentos": [
+    {
+      "nome": "Losartana",
+      "laboratorio": "Laboratório Pharmaco",
+      "preco": 17.25,
+      "favorito": false,
+      "id": 0
+    },
+    {
+      "nome": "Cetirizina",
+      "laboratorio": "Laboratório HealthWave",
+      "preco": 9.85,
+      "favorito": true,
+      "id": 1
+    },
+    {
+      "nome": "Atorvastatina",
+      "laboratorio": "Laboratório MedLife",
+      "preco": 23.75,
+      "favorito": false,
+      "id": 2
+    },
+    {
+      "nome": "Amoxicilina",
+      "laboratorio": "Laboratório Biogen",
+      "preco": 14.99,
+      "favorito": true,
+      "id": 3
+    },
+    {
+      "nome": "Omeprazol",
+      "laboratorio": "Laboratório PharmaCare",
+      "preco": 12.49,
+      "favorito": false,
+      "id": 4
+    },
+    {
+      "nome": "Alegra",
+      "laboratorio": "Laboratório SAS",
+      "preco": 32.99,
+      "favorito": true,
+      "id": 5
+    },
+    {
+      "nome": "DorFlex",
+      "laboratorio": "Laboratório POP",
+      "preco": 10.99,
+      "favorito": false,
+      "id": 6
+    },
+    {
+      "nome": "Enalapril",
+      "laboratorio": "Laboratório MKK",
+      "preco": 25.99,
+      "favorito": true,
+      "id": 7
+    },
+    {
+      "nome": "Paracetamol",
+      "laboratorio": "Laboratório ADS",
+      "preco": 18.99,
+      "favorito": false,
+      "id": 8
+    },
+    {
+      "nome": "Ibuprofeno",
+      "laboratorio": "Laboratório XYZ",
+      "preco": 15.99,
+      "favorito": true,
+      "id": 9
+    }
+  ]
+}
