@@ -1,5 +1,5 @@
 <template>
-  <v-container class="ma-0 pa-0">
+  <v-container class="ma-0 pa-0 pt-2">
     <header class="menu">
       <router-link to="/">
         <img class="mt-1" src="../assets/logo-funk-lab.png" alt="logo Funko Lab" />
@@ -24,7 +24,6 @@ export default {
   align-items: center;
   max-width: 100%;
   background-color: #0392b6;
-  height: 70px;
 }
 
 .menu {
@@ -35,6 +34,7 @@ export default {
   height: 100%;
   padding-left: 15vh;
   padding-right: 15vh;
+  height: 70px;
 }
 
 img {
