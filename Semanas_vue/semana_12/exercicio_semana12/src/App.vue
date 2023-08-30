@@ -1,6 +1,10 @@
 <template>
   <PagMenu />
-  <router-view></router-view>
+
+  <main>
+    <router-view></router-view>
+  </main>
+
   <footer>
     (C) 2023 FunkoLAB - Rua dos Colecionáveis n° 456, Sala 202, CEP 98765-432 GeekCity/SP - CNPJ:
     88.888.888/0001-88
