@@ -5,8 +5,8 @@
         <img class="mt-1" src="../assets/logo-funk-lab.png" alt="logo Funko Lab" />
       </router-link>
       <router-link to="/carrinho" class="carrinho">
-        <h4>{{ this.$store.state.produtosCarrinho.length }} itens</h4>
         <v-icon color="white" size="large">mdi-cart</v-icon>
+        <div class="quantidade">{{ this.$store.state.produtosCarrinho.length }}</div>
       </router-link>
     </header>
   </v-container>
@@ -49,6 +49,20 @@ a {
 }
 .carrinho {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+}
+
+.quantidade {
+  background-color: #f5a623;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: -15px;
+  margin-top: -15px;
 }
 </style>
