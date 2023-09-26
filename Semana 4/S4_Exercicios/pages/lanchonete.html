@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 8 - Lanchonete online</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      text-decoration: none;
+      font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #formulario {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .inputs {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+
+    }
+
+    img {
+      max-width: 70%;
+      height: auto;
+    }
+
+    #resultado {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      display: none;
+    }
+
+    #cardapio {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    h1,
+    h2 {
+      font-size: 24px;
+      margin: 10px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    input {
+      width: 80%;
+      height: 40px;
+      padding-left: 10px;
+      border-radius: 4px;
+      border: 1px solid rgb(209, 209, 209);
+    }
+
+    button {
+      background-color: #6558f5;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: white;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #483fac;
+    }
+
+    .botaoCinza {
+      background-color: #788896;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: white;
+      margin: 15px;
+    }
+
+    .botaoCinza:hover {
+      background-color: #6558f5;
+    }
+
+    .error {
+      border-color: red;
+    }
+
+    .textoErro {
+      color: red;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <section>
+      <div class="container">
+        <div id="cardapio">
+          <h1>Lanchonete Online</h1>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Pedido</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>1123</td>
+                <td>Hamburguer</td>
+                <td>R$12,00</td>
+              </tr>
+
+              <tr>
+                <td>3423</td>
+                <td>Sanduiche de Pernil</td>
+                <td>R$9,00</td>
+              </tr>
+
+              <tr>
+                <td>4521</td>
+                <td>Bauru</td>
+                <td>R$15,00</td>
+              </tr>
+
+              <tr>
+                <td>5222</td>
+                <td>Sanduiche de Mortadela</td>
+                <td>R$34,99</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="formulario">
+          <div class="inputs">
+            <input id="produto" type="number" placeholder="Digite o código do produto" autofocus />
+            <span id="erroProduto" class="textoErro" hidden></span>
+          </div>
+          <div class="inputs">
+            <input id="quantidade" type="number" placeholder="Digite a quantidade desejada" />
+            <span id="errorQuantidade" class="textoErro" hidden></span>
+          </div>
+          <button type="button" onclick="fazerPedido()">Fazer pedido</button>
+        </div>
+
+        <div id="resultado">
+
+          <h3>
+            <p id="custoTotal"></p>
+          </h3>
+          <p><em>Lanchonete online agradece!</em></p>
+          <button class="botaoCinza" type="button" onclick="fazerOutroPedido()">
+            Fazer outro pedido
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function validaInputs(produto, quantidade) {
+        document.getElementById("produto").classList.remove("error");
+        document.getElementById("erroProduto").hidden = true;
+        document.getElementById("quantidade").classList.remove("error");
+        document.getElementById("errorQuantidade").hidden = true;
+
+        if (!produto) {
+          document.getElementById("produto").classList.add("error");
+          document.getElementById("erroProduto").hidden = false;
+          document.getElementById("erroProduto").innerText =
+            "O código do produto é obrigatório";
+        }
+
+        if (!quantidade) {
+          document.getElementById("quantidade").classList.add("error");
+          document.getElementById("errorQuantidade").hidden = false;
+          document.getElementById("errorQuantidade").innerText =
+            "A quantidade é obrigatória";
+        }
+      }
+
+      function fazerPedido() {
+        var codigo = document.getElementById("produto").value;
+        var quantidade = document.getElementById("quantidade").value;
+
+
+        validaInputs(codigo, quantidade);
+
+        if (codigo === "" || quantidade === "") {
+          console.log("Erro");
+        } else {
+          switch (codigo) {
+            case "1123": {
+              var valorTotal = calcularPedido(12.00, quantidade)
+              document.getElementById("custoTotal").innerText = quantidade + " Hambúrguer custam " + valorTotal
+
+
+              document.getElementById("cardapio").style.display = "none";
+              document.getElementById("formulario").style.display = "none";
+              document.getElementById("resultado").style.display = "flex";
+              break;
+            }
+            case "3423": {
+              var valorTotal = calcularPedido(9.00, quantidade)
+              document.getElementById("custoTotal").innerText = quantidade + " Sanduíche de pernil custam " + valorTotal
+
+              document.getElementById("cardapio").style.display = "none";
+              document.getElementById("formulario").style.display = "none";
+              document.getElementById("resultado").style.display = "flex";
+              break;
+            }
+            case "4521": {
+              var valorTotal = calcularPedido(15.00, quantidade)
+              document.getElementById("custoTotal").innerText = "R$" + valorTotal
+              document.getElementById("custoTotal").innerText = quantidade + " Bauru custam " + valorTotal
+
+
+              document.getElementById("cardapio").style.display = "none";
+              document.getElementById("formulario").style.display = "none";
+              document.getElementById("resultado").style.display = "flex";
+              break;
+            }
+            case "5222": {
+              var valorTotal = calcularPedido(34.99, quantidade)
+              document.getElementById("custoTotal").innerText = quantidade + " Sanduíche de mortadela custam " + valorTotal
+
+              document.getElementById("cardapio").style.display = "none";
+              document.getElementById("formulario").style.display = "none";
+              document.getElementById("resultado").style.display = "flex";
+              break;
+            }
+            default: {
+              alert("Código inválido");
+            }
+          }
+        }
+
+      }
+
+      function calcularPedido(preco, quantidade) {
+        var valorTotal = preco * quantidade;
+        var valorFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(valorTotal);
+        return valorFormatado
+      }
+
+      function fazerOutroPedido() {
+        document.getElementById("produto").value = "";
+        document.getElementById("quantidade").value = "";
+
+
+        document.getElementById("resultado").style.display = "none";
+        document.getElementById("formulario").style.display = "flex";
+        document.getElementById("cardapio").style.display = "flex";
+      }
+    </script>
+</body>
+
+</html>

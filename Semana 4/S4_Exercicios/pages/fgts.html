@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 4 - Cálculo de FGTS</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #formulario {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inputs {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    max-width: 80%;
+    height: auto;
+  }
+
+  #resultado {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: none;
+  }
+
+  h1,
+  h2 {
+    font-size: 24px;
+    margin: 10px;
+  }
+
+  input {
+    width: 80%;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(209, 209, 209);
+  }
+
+  button {
+    background-color: #6558f5;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    margin: 10px;
+  }
+
+  button:hover {
+    background-color: #483fac;
+  }
+
+  .botaoCinza {
+    background-color: #788896;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    margin: 15px;
+  }
+
+  .botaoCinza:hover {
+    background-color: #6558f5;
+  }
+
+  .error {
+    border-color: red;
+  }
+
+  .textoErro {
+    color: red;
+    font-size: 12px;
+  }
+
+  .mensal {
+    background-color: #d5e7f7;
+    border: 1px solid #368edb;
+    border-radius: 25px;
+    padding: 15px 90px;
+    font-weight: bold;
+  }
+
+  .anual {
+    background-color: #d2e4e1;
+    border: 2px solid #54988b;
+    border-radius: 25px;
+    padding: 15px 90px;
+    font-weight: bold;
+  }
+</style>
+
+<body>
+  <section>
+    <div class="container">
+      <div id="formulario">
+        <h1>Calculadora de FGTS</h1>
+        <img src="https://isaebrasil.com.br/wp-content/uploads/2022/05/antecipacao-do-fgts.jpg"
+          alt="Simbolo que representa o FGTS" />
+
+        <div class="inputs">
+          <input type="number" placeholder="Salário Bruto" id="salario" autofocus />
+          <span id="errorSalario" class="textoErro" hidden></span>
+        </div>
+
+        <button type="button" onclick="calcularFGTS()">Calcular</button>
+      </div>
+
+      <div id="resultado">
+        <h2>Resultado</h2>
+        <p id="mensal"></p>
+        <p id="anual"></p>
+        <button class="botaoCinza" type="button" onclick="calcularNovamente()">
+          Calcular Novamente
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function validaInputs(salario) {
+      document.getElementById("salario").classList.remove("error");
+      document.getElementById("errorSalario").hidden = true;
+
+      if (!salario) {
+        document.getElementById("salario").classList.add("error");
+        document.getElementById("errorSalario").hidden = false;
+        document.getElementById("errorSalario").innerText =
+          "Digite seu salário bruto!";
+      }
+    }
+
+    function calcularFGTS() {
+      var salarioBruto = document.getElementById("salario").value;
+      var resultadoMensal = salarioBruto * 0.08;
+      var resultadoAnual = resultadoMensal * 12;
+
+      validaInputs(salarioBruto);
+
+      if (!salarioBruto) {
+        console.log("Erro");
+      } else {
+        document.getElementById("mensal").innerText =
+          "FGTS mensal: R$ " + resultadoMensal.toFixed(2);
+        document.getElementById("anual").innerText =
+          "FGTS anual: R$ " + resultadoAnual.toFixed(2);
+        document.getElementById("mensal").classList.add("mensal");
+        document.getElementById("anual").classList.add("anual");
+
+        document.getElementById("formulario").style.display = "none";
+        document.getElementById("resultado").style.display = "flex";
+      }
+    }
+
+    function calcularNovamente() {
+      document.getElementById("salario").value = "";
+      document.getElementById("mensal").classList.remove("mensal");
+      document.getElementById("anual").classList.remove("anual");
+
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("formulario").style.display = "flex";
+    }
+  </script>
+</body>
+
+</html>

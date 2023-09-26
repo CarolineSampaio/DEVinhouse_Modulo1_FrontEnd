@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex 9 - Calculadora Básica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            text-decoration: none;
+            font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #formulario {
+            display: flex;
+            width: 50vh;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .inputs {
+            display: flex;
+            width: 50vh;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #resultado {
+            display: flex;
+            width: 50vh;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            display: none;
+        }
+
+        h1,
+        h2 {
+            font-size: 24px;
+            margin: 10px;
+        }
+
+        input,
+        select {
+            width: 80%;
+            height: 40px;
+            padding-left: 10px;
+            border-radius: 4px;
+            border: 1px solid rgb(209, 209, 209);
+        }
+
+        label {
+            margin: 10px;
+
+        }
+
+        button {
+            background-color: #6558f5;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            color: white;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #483fac;
+        }
+
+        .botao-cinza {
+            background-color: #788896;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            color: white;
+            margin: 15px;
+        }
+
+        .botao-cinza:hover {
+            background-color: #6558f5;
+        }
+
+        .error {
+            border-color: red;
+        }
+
+        .textoErro {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div id="formulario">
+                <h1>Calculadora Básica</h1>
+                <div class="inputs">
+                    <label>Qual o primeiro valor?</label>
+                    <input type="number" id="valor1" placeholder="Primeiro Valor" autofocus />
+                    <span id="valor1Erro" class="textoErro" hidden></span>
+                </div>
+                <div class="inputs">
+                    <label>Qual o segundo valor?</label>
+                    <input type="number" id="valor2" placeholder="Segundo Valor" />
+                    <span id="valor2Erro" class="textoErro" hidden></span>
+                </div>
+                <div class="inputs">
+                    <label>Qual operação?</label>
+                    <select id="operacao">
+                        <option selected disabled>Selecione a operação desejada</option>
+                        <option value="1">Soma</option>
+                        <option value="2">Subtração</option>
+                        <option value="3">Multiplicação</option>
+                        <option value="4">Divisão</option>
+                        <option value="5">Expoente</option>
+                        <option value="6">Raiz Quadrada</option>
+                    </select>
+                    <span id="operacaoErro" class="textoErro" hidden></span>
+                </div>
+                <button type="button" onclick="calcular()">Calcular</button>
+            </div>
+
+            <div id="resultado">
+                <h2>Resultado</h2>
+                <p id="resultadoCalculo"></p>
+                <button class="botao-cinza" type="button" onclick="calcularNovamente()">
+                    Calcular Novamente
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function validaInputs(valor1, valor2, operacao) {
+            document.getElementById("valor1").classList.remove("error");
+            document.getElementById("valor1Erro").hidden = true;
+            document.getElementById("valor2").classList.remove("error");
+            document.getElementById("valor2Erro").hidden = true;
+            document.getElementById("operacao").classList.remove("error");
+            document.getElementById("operacaoErro").hidden = true;
+
+            if (!valor1) {
+                document.getElementById("valor1").classList.add("error");
+                document.getElementById("valor1Erro").hidden = false;
+                document.getElementById("valor1Erro").innerText = "Valor 1 inválido";
+            }
+
+            if (!valor2) {
+                document.getElementById("valor2").classList.add("error");
+                document.getElementById("valor2Erro").hidden = false;
+                document.getElementById("valor2Erro").innerText = "Valor 2 inválido";
+            }
+
+            if (operacao === "Selecione a operação desejada" || !operacao) {
+                document.getElementById("operacao").classList.add("error");
+                document.getElementById("operacaoErro").hidden = false;
+                document.getElementById("operacaoErro").innerText = "A Operação é obrigatória";
+            }
+
+        }
+
+        function calcular() {
+            var valor1 = parseFloat(document.getElementById("valor1").value);
+            var valor2 = parseFloat(document.getElementById("valor2").value);
+            var operacao = document.getElementById("operacao").value;
+
+            validaInputs(valor1, valor2, operacao)
+
+            if (valor1 === "" || valor2 === "" || operacao === "") {
+                console.log("Erro");
+            } else {
+                switch (operacao) {
+                    case '1': {
+                        var resultado = valor1 + valor2
+
+                        document.getElementById("resultadoCalculo").innerText = `${valor1} + ${valor2} = ${resultado}`
+                        document.getElementById("formulario").style.display = "none";
+                        document.getElementById("resultado").style.display = "flex";
+                        break;
+                    }
+                    case '2': {
+                        var resultado = valor1 - valor2
+
+                        document.getElementById("resultadoCalculo").innerText = `${valor1} - ${valor2} = ${resultado}`
+                        document.getElementById("formulario").style.display = "none";
+                        document.getElementById("resultado").style.display = "flex";
+                        break;
+                    }
+                    case '3': {
+                        var resultado = valor1 * valor2
+
+                        document.getElementById("resultadoCalculo").innerText = `${valor1} x ${valor2} = ${resultado}`
+                        document.getElementById("formulario").style.display = "none";
+                        document.getElementById("resultado").style.display = "flex";
+                        break;
+                    }
+                    case '4': {
+                        var resultado = valor1 / valor2
+
+                        document.getElementById("resultadoCalculo").innerText = `${valor1} / ${valor2} = ${resultado}`
+                        document.getElementById("formulario").style.display = "none";
+                        document.getElementById("resultado").style.display = "flex";
+                        break;
+                    }
+                    case '5': {
+                        var resultado = valor1 ** valor2
+
+                        document.getElementById("resultadoCalculo").innerText = `${valor1} ** ${valor2} = ${resultado}`
+                        document.getElementById("formulario").style.display = "none";
+                        document.getElementById("resultado").style.display = "flex";
+                        break;
+                    }
+                    case '6': {
+                        var raizValor1 = Math.sqrt(valor1)
+                        var raizValor2 = Math.sqrt(valor2)
+
+                        document.getElementById("resultadoCalculo").innerText = `Raiz quadrada de ${valor1} = ${raizValor1.toFixed(2)} \n Raiz quadrada de ${valor2} = ${raizValor2.toFixed(2)}`
+                        document.getElementById("formulario").style.display = "none";
+                        document.getElementById("resultado").style.display = "flex";
+                        break;
+                    }
+                    default: {
+                        console.log("Você não escolheu uma operação válida")
+                    }
+                }
+            }
+        }
+
+        function calcularNovamente() {
+            document.getElementById("valor1").value = "";
+            document.getElementById("valor2").value = "";
+            document.getElementById("operacao").value = "";
+
+            document.getElementById("resultado").style.display = "none";
+            document.getElementById("formulario").style.display = "flex";
+        }
+    </script>
+</body>
+
+</html>

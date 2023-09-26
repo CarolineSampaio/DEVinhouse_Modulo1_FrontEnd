@@ -1,0 +1,250 @@
+<!-- APENAS DAR O COMMIT -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 6 - Calculadora salário</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #formulario {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inputs {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #resultado {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: none;
+  }
+
+  h1,
+  h2 {
+    font-size: 24px;
+    margin: 10px;
+  }
+
+  input {
+    width: 80%;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(209, 209, 209);
+  }
+
+  button {
+    background-color: #6558f5;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    margin: 10px;
+  }
+
+  button:hover {
+    background-color: #483fac;
+  }
+
+  .botao-cinza {
+    background-color: #788896;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    margin: 15px;
+  }
+
+  .botao-cinza:hover {
+    background-color: #6558f5;
+  }
+
+  .error {
+    border-color: red;
+  }
+
+  .textoErro {
+    color: red;
+    font-size: 12px;
+  }
+
+  .resultado {
+    background-color: #d5e7f7;
+    border: 1px solid #368edb;
+    padding: 15px 90px;
+    line-height: 2;
+  }
+</style>
+
+<body>
+  <section>
+    <div class="container">
+      <div id="formulario">
+        <h1>Cálculo de salário liquido</h1>
+        <div class="inputs">
+          <input type="number" placeholder="Salário Bruto" id="salario" autofocus />
+          <span id="errorSalario" class="textoErro" hidden></span>
+        </div>
+        <button type="button" onclick="calcularDescontos()">Calcular</button>
+      </div>
+
+      <div id="resultado">
+        <h2>Resultado</h2>
+        <p id="salarioLiquido"></p>
+        <button class="botao-cinza" type="button" onclick="calcularNovamente()">
+          Calcular Novamente
+        </button>
+      </div>
+    </div>
+  </section>
+  <script>
+    function validaInputs(salario) {
+      document.getElementById("salario").classList.remove("error");
+      document.getElementById("errorSalario").hidden = true;
+
+      if (!salario) {
+        document.getElementById("salario").classList.add("error");
+        document.getElementById("errorSalario").hidden = false;
+        document.getElementById("errorSalario").innerText =
+          "Digite seu salário bruto!";
+      }
+    }
+
+    function calcularImpostoRenda(salarioFuncionario) {
+      var impostoRenda = 0;
+
+      if (salarioFuncionario <= 1903.98) {
+        impostoRenda = 0; // Nenhum imposto
+      } else if (
+        salarioFuncionario >= 1903.99 &&
+        salarioFuncionario <= 2826.65
+      ) {
+        impostoRenda = salarioFuncionario * 0.075 - 142.8; // 7.5% de imposto
+      } else if (
+        salarioFuncionario >= 2826.66 &&
+        salarioFuncionario <= 3751.05
+      ) {
+        impostoRenda = salarioFuncionario * 0.15 - 354.8; // 15% de imposto
+      } else if (
+        salarioFuncionario >= 3751.06 &&
+        salarioFuncionario <= 4664.68
+      ) {
+        impostoRenda = salarioFuncionario * 0.225 - 636.13; // 22.5% de imposto
+      } else {
+        impostoRenda = salarioFuncionario * 0.275 - 869.36; // 27.5% de imposto
+      }
+      return impostoRenda;
+    }
+
+    function calcularInss(salarioFuncionario) {
+      var inss = 0;
+
+      if (salarioFuncionario <= 1302) {
+        inss = salarioFuncionario * 0.075; // 7.5% de INSS
+      } else if (
+        salarioFuncionario >= 1302.01 &&
+        salarioFuncionario <= 2571.29
+      ) {
+        inss = salarioFuncionario * 0.09; // 9% de INSS
+      } else if (
+        salarioFuncionario >= 2571.3 &&
+        salarioFuncionario <= 3856.94
+      ) {
+        inss = salarioFuncionario * 0.12; // 12% de INSS
+      } else {
+        inss = salarioFuncionario * 0.14; // 14% de INSS
+      }
+      return inss;
+    }
+
+    function calcularSalarioLiquido(salarioFuncionario, impostoRenda, inss) {
+      var resultadoSalarioLiquido = salarioFuncionario - impostoRenda - inss;
+      return resultadoSalarioLiquido;
+    }
+
+    function calcularDescontos() {
+      var salarioFuncionario = document.getElementById("salario").value;
+
+      validaInputs(salarioFuncionario);
+
+      if (!salarioFuncionario) {
+        console.log("Erro");
+      } else {
+        var inss = calcularInss(salarioFuncionario);
+        var impostoRenda = calcularImpostoRenda(salarioFuncionario);
+        var salarioLiquido = calcularSalarioLiquido(
+          salarioFuncionario,
+          impostoRenda,
+          inss
+        );
+
+        var salarioFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(salarioLiquido);
+
+        var inssFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(inss);
+
+        var impostoRendaFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(impostoRenda);
+
+        var resultado = document.getElementById("salarioLiquido");
+        resultado.classList.add("resultado");
+
+        resultado.innerHTML = `
+          Imposto de Renda:: ${impostoRendaFormatado}
+          <br>
+          Contribuição INSS: ${inssFormatado}
+          <br>
+          Salário a receber: ${salarioFormatado}
+        `;
+        document.getElementById("formulario").style.display = "none";
+        document.getElementById("resultado").style.display = "flex";
+      }
+    }
+
+    function calcularNovamente() {
+      document.getElementById("salario").value = "";
+      document.getElementById("salarioLiquido").classList.remove("resultado");
+
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("formulario").style.display = "flex";
+    }
+  </script>
+</body>
+
+</html>

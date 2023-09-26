@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex 2 - Cálculo de IMC</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      text-decoration: none;
+      font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #formulario {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .inputs {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img {
+      max-width: 30%;
+      height: auto;
+    }
+
+    #resultado {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      display: none;
+    }
+
+    h1,
+    h2 {
+      font-size: 24px;
+      margin: 10px;
+    }
+
+    input {
+      width: 80%;
+      height: 40px;
+      padding-left: 10px;
+      border-radius: 4px;
+      border: 1px solid rgb(209, 209, 209);
+    }
+
+    button {
+      background-color: #6558f5;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: white;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #483fac;
+    }
+
+    .botaoCinza {
+      background-color: #788896;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: white;
+      margin: 15px;
+    }
+
+    .botaoCinza:hover {
+      background-color: #6558f5;
+    }
+
+    .error {
+      border-color: red;
+    }
+
+    .textoErro {
+      color: red;
+      font-size: 12px;
+    }
+  </style>
+
+  <body>
+    <section>
+      <div class="container">
+        <div id="formulario">
+          <h2>Calculadora de frete</h2>
+          <img
+            src="https://play-lh.googleusercontent.com/ouL1lfSP_CyUgb5OUvI51jG3cevMfulA1GZGtS63r3Xfa8STYiIxq6KiY3PkMc6PcTk"
+            alt="Imagem simbolo calculadora IMC"
+          />
+
+          <div class="inputs">
+            <input autofocus type="number" placeholder="Peso (kg)" id="peso" />
+            <span id="errorPeso" class="textoErro" hidden></span>
+          </div>
+          <div class="inputs">
+            <input type="number" placeholder="Altura (cm)" id="altura" />
+            <span id="errorAltura" class="textoErro" hidden></span>
+          </div>
+          <button type="button" onclick="calcularIMC()">Calcular</button>
+        </div>
+
+        <div id="resultado">
+          <h2>Resultado</h2>
+          <p id="IMCCalculado"></p>
+          <button
+            class="botaoCinza"
+            type="button"
+            onclick="calcularNovamente()"
+          >
+            Calcular Novamente
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function validaInputs(errorPeso, errorAltura) {
+        document.getElementById("peso").classList.remove("error");
+        document.getElementById("errorPeso").hidden = true;
+        document.getElementById("altura").classList.remove("error");
+        document.getElementById("errorAltura").hidden = true;
+
+        if (!errorPeso) {
+          document.getElementById("peso").classList.add("error");
+          document.getElementById("errorPeso").hidden = false;
+          document.getElementById("errorPeso").innerText =
+            "O peso é obrigatório";
+        }
+
+        if (!errorAltura) {
+          document.getElementById("altura").classList.add("error");
+          document.getElementById("errorAltura").hidden = false;
+          document.getElementById("errorAltura").innerText =
+            "A distância é obrigatória";
+        }
+      }
+      function calcularIMC() {
+        var peso = document.getElementById("peso").value;
+        var altura = document.getElementById("altura").value;
+
+        validaInputs(peso, altura);
+
+        if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+          console.log("Erro");
+        } else {
+          altura = altura / 100;
+          var imc = peso / (altura * altura);
+          var classificacao = "";
+          if (imc <= 18.5) {
+            classificacao = "Você está abaixo do peso!";
+          } else if (imc >= 18.6 && imc <= 24.9) {
+            classificacao = "Você está com peso ideal!";
+          } else if (imc >= 25.0 && imc <= 29.9) {
+            classificacao = "Você está levemente acima do peso!";
+          } else if (imc >= 30 && imc <= 34.9) {
+            classificacao = "Você está com Obesidade Grau I!";
+          } else if (imc >= 35 && imc <= 39.9) {
+            classificacao = "Você está com Obesidade Grau II!";
+          } else {
+            classificacao = "Você está com Obesidade Grau III!";
+          }
+
+          var IMC = document.getElementById("IMCCalculado");
+          IMC.innerHTML = `
+          Seu IMC é: ${imc.toFixed(2)}
+          <br>
+          Classificação: ${classificacao}
+        `;
+          document.getElementById("formulario").style.display = "none";
+          document.getElementById("resultado").style.display = "flex";
+        }
+      }
+
+      function calcularNovamente() {
+        document.getElementById("peso").value = "";
+        document.getElementById("altura").value = "";
+
+        document.getElementById("resultado").style.display = "none";
+        document.getElementById("formulario").style.display = "flex";
+      }
+    </script>
+  </body>
+</html>

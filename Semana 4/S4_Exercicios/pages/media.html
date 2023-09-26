@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 4 - Cálculo de média</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      text-decoration: none;
+      font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #formulario {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .inputs {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #resultado {
+      display: flex;
+      width: 50vh;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      display: none;
+    }
+
+    h1,
+    h2 {
+      font-size: 24px;
+      margin: 10px;
+    }
+
+    input {
+      width: 80%;
+      height: 40px;
+      padding-left: 10px;
+      border-radius: 4px;
+      border: 1px solid rgb(209, 209, 209);
+    }
+
+    button {
+      background-color: #6558f5;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: white;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #483fac;
+    }
+
+    .botao-cinza {
+      background-color: #788896;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: white;
+      margin: 15px;
+    }
+
+    .botao-cinza:hover {
+      background-color: #6558f5;
+    }
+
+    .error {
+      border-color: red;
+    }
+
+    .textoErro {
+      color: red;
+      font-size: 12px;
+    }
+
+    .aprovado {
+      background-color: #d2e4e1;
+      border: 2px solid #54988b;
+      border-radius: 25px;
+      padding: 15px 90px;
+      font-weight: bold;
+    }
+
+    .recuperacao {
+      background-color: #d5e7f7;
+      border: 1px solid #368edb;
+      border-radius: 25px;
+      padding: 15px 90px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <div id="formulario">
+        <h1>Cálculo de média</h1>
+        <div class="inputs">
+          <input type="number" id="nota1" placeholder="Nota 1" autofocus />
+          <span id="nota1Erro" class="textoErro" hidden></span>
+        </div>
+        <div class="inputs">
+          <input type="number" id="nota2" placeholder="Nota 2" />
+          <span id="nota2Erro" class="textoErro" hidden></span>
+        </div>
+        <div class="inputs">
+          <input type="number" id="nota3" placeholder="Nota 3" />
+          <span id="nota3Erro" class="textoErro" hidden></span>
+        </div>
+        <button type="button" onclick="calcularMedia()">Calcular</button>
+      </div>
+
+      <div id="resultado">
+        <h2>Resultado</h2>
+        <p id="mediaFinal"></p>
+        <button class="botao-cinza" type="button" onclick="calcularNovamente()">
+          Calcular Novamente
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function validaInputs(nota1, nota2, nota3) {
+      document.getElementById("nota1").classList.remove("error");
+      document.getElementById("nota1Erro").hidden = true;
+      document.getElementById("nota2").classList.remove("error");
+      document.getElementById("nota2Erro").hidden = true;
+      document.getElementById("nota3").classList.remove("error");
+      document.getElementById("nota3Erro").hidden = true;
+
+      if (!nota1) {
+        document.getElementById("nota1").classList.add("error");
+        document.getElementById("nota1Erro").hidden = false;
+        document.getElementById("nota1Erro").innerText = "Nota 1 inválida";
+      }
+
+      if (!nota2) {
+        document.getElementById("nota2").classList.add("error");
+        document.getElementById("nota2Erro").hidden = false;
+        document.getElementById("nota2Erro").innerText = "Nota 2 inválida";
+      }
+
+      if (!nota3) {
+        document.getElementById("nota3").classList.add("error");
+        document.getElementById("nota3Erro").hidden = false;
+        document.getElementById("nota3Erro").innerText = "Nota 3 inválida";
+      }
+    }
+
+    function calcularMedia() {
+      var nota1 = parseFloat(document.getElementById("nota1").value);
+      var nota2 = parseFloat(document.getElementById("nota2").value);
+      var nota3 = parseFloat(document.getElementById("nota3").value);
+
+      validaInputs(nota1, nota2, nota3);
+
+      var media = ((nota1 + nota2 + nota3) / 3).toFixed(1);
+
+      if (media && !isNaN(media)) {
+        var notaMinima = 7;
+        var aprovado = media >= notaMinima ? true : false;
+        media = media.toString().replace(".", ",");
+
+        if (aprovado) {
+          document.getElementById(
+            "mediaFinal"
+          ).textContent = `Aprovado - ${media}`;
+          document.getElementById("mediaFinal").classList.add("aprovado");
+        } else {
+          document.getElementById(
+            "mediaFinal"
+          ).textContent = `Em recuperação - ${media}`;
+          document.getElementById("mediaFinal").classList.add("recuperacao");
+        }
+
+        document.getElementById("formulario").style.display = "none";
+        document.getElementById("resultado").style.display = "flex";
+      }
+    }
+
+    function calcularNovamente() {
+      document.getElementById("nota1").value = "";
+      document.getElementById("nota2").value = "";
+      document.getElementById("nota3").value = "";
+      document.getElementById("mediaFinal").classList.remove("aprovado");
+      document.getElementById("mediaFinal").classList.remove("recuperacao");
+
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("formulario").style.display = "flex";
+    }
+  </script>
+</body>
+
+</html>

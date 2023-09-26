@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 7 - Carta ferias</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #formulario {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inputs {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+  }
+
+  #resultado {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: none;
+  }
+
+  h1,
+  h2 {
+    font-size: 24px;
+    margin: 10px;
+  }
+
+  input {
+    width: 80%;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(209, 209, 209);
+  }
+
+  button {
+    background-color: #6558f5;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    margin: 10px;
+  }
+
+  button:hover {
+    background-color: #483fac;
+  }
+
+  .botao-cinza {
+    background-color: #788896;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    margin: 15px;
+  }
+
+  .botao-cinza:hover {
+    background-color: #6558f5;
+  }
+
+  .error {
+    border-color: red;
+  }
+
+  .textoErro {
+    color: red;
+    font-size: 12px;
+  }
+</style>
+
+<body>
+  <section>
+    <div class="container">
+      <div id="formulario">
+        <div class="inputs">
+          <label>Nome do funcionário</label>
+          <input id="nome" autofocus placeholder="Nome do funcionário" />
+          <span id="errorNome" class="textoErro" hidden></span>
+        </div>
+        <div class="inputs">
+          <label>Data de início:</label>
+          <input type="date" id="dataInicio" />
+          <span id="errorDataInicio" class="textoErro" hidden></span>
+        </div>
+        <div class="inputs">
+          <label>Data de término:</label>
+          <input type="date" id="dataTermino" />
+          <span id="errorDataTermino" class="textoErro" hidden></span>
+        </div>
+        <button type="button" onclick="gerarCarta()">Gerar carta</button>
+      </div>
+
+      <div id="resultado">
+        <p id="cartaFerias"></p>
+        <button class="botao-cinza" type="button" onclick="gerarOutraCarta()">
+          Gerar outra carta
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function validaInputs(nome, dataInicio, dataTermino) {
+      document.getElementById("nome").classList.remove("error");
+      document.getElementById("errorNome").hidden = true;
+      document.getElementById("dataInicio").classList.remove("error");
+      document.getElementById("errorDataInicio").hidden = true;
+      document.getElementById("dataTermino").classList.remove("error");
+      document.getElementById("errorDataTermino").hidden = true;
+
+      if (!nome) {
+        document.getElementById("nome").classList.add("error");
+        document.getElementById("errorNome").hidden = false;
+        document.getElementById("errorNome").innerText =
+          "O nome do funcionário é obrigatório";
+      }
+
+      if (!dataInicio) {
+        document.getElementById("dataInicio").classList.add("error");
+        document.getElementById("errorDataInicio").hidden = false;
+        document.getElementById("errorDataInicio").innerText =
+          "A data de início é obrigatória";
+      }
+
+      if (!dataTermino) {
+        document.getElementById("dataTermino").classList.add("error");
+        document.getElementById("errorDataTermino").hidden = false;
+        document.getElementById("errorDataTermino").innerText =
+          "A data de término é obrigatória";
+      }
+    }
+
+    function gerarCarta() {
+      var nome = document.getElementById("nome").value;
+      var dataInicio = document.getElementById("dataInicio").value;
+      var dataTermino = document.getElementById("dataTermino").value;
+      var dataHoje = new Date().toLocaleDateString();
+
+      validaInputs(nome, dataInicio, dataTermino);
+
+      if (!nome || !dataInicio || !dataTermino) {
+        console.log("Erro");
+      } else {
+        var resultado = document.getElementById("cartaFerias");
+        resultado.innerText = `Caro(a) responsável
+          Gostaria de solicitar minhas férias:
+
+          Nome do funcionário: ${nome}
+          Data de inicio: ${formatarData(dataInicio)}
+          Data de fim: ${formatarData(dataTermino)}
+
+          Agradeço a atenção
+
+          Atenciosamente, ${nome}
+
+          Gerado em ${dataHoje}
+          `;
+
+        document.getElementById("formulario").style.display = "none";
+        document.getElementById("resultado").style.display = "flex";
+      }
+    }
+    function gerarOutraCarta() {
+      document.getElementById("nome").value = "";
+      document.getElementById("dataInicio").value = "";
+      document.getElementById("dataTermino").value = "";
+
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("formulario").style.display = "flex";
+    }
+
+    function formatarData(data) {
+      const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+      return new Date(data).toLocaleDateString("pt-BR", { timeZone: "UTC" });
+    }
+  </script>
+</body>
+
+</html>
