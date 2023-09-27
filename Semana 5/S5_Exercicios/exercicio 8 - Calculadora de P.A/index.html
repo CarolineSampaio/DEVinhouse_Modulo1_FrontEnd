@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 8</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Exercício 8 | S05-M1</h1>
+      <p>Time: Loops</p>
+    </header>
+    <section id="telaInicial" class="container">
+      <h2>Calculadora de Progressão Aritmética</h2>
+      <form class="formulario">
+        <div class="formulario">
+          <label>Primeiro termo da P.A:</label>
+          <input id="termo" type="number" />
+          <span id="erroTermo" class="textoErro" hidden></span>
+        </div>
+        <div class="formulario">
+          <label>Razão:</label>
+          <input id="razao" type="number" />
+          <span id="erroRazao" class="textoErro" hidden></span>
+        </div>
+        <button type="button" onclick="calculaPA()">CALCULAR</button>
+      </form>
+    </section>
+    <section id="telaFinal" class="container">
+      <div class="resultado">
+        <h2>Resultado da PA:</h2>
+        <p id="resultado"></p>
+        <button type="button" onclick="calcularNovamente()">
+          Calcular novamente
+        </button>
+      </div>
+    </section>
+
+    <footer>&copy; Caroline dos Santos Sampaio</footer>
+  </body>
+</html>

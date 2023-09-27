@@ -1,0 +1,28 @@
+:root {
+  font-family: sans-serif;
+}
+
+html,
+body,
+header,
+main,
+footer,
+div {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+main {
+  flex-grow: 1;
+}
